@@ -9,22 +9,22 @@ const btnJurusan = document.getElementById('btnJurusan');
 
 // Event Listener saat tombol Nama diklik
 btnNama.addEventListener('click', function() {
-    infoText.innerHTML = "<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA";
+    alert('HAI NAMA SAYA  MUIZ ADKHA MAULANA KERAP DINPANGGIL MUIS');
 });
 
 // Event Listener saat tombol Tempat & Tgl Lahir diklik
 btnTtl.addEventListener('click', function() {
-    infoText.innerHTML = "<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009";
+    alert('SAYA LAHIR DI MALANG, 21 NOVEMBER 2009');
 });
 
 // Event Listener saat tombol Alamat diklik
 btnAlamat.addEventListener('click', function() {
-    infoText.innerHTML = "<b>Alamat:</b> LEBAKHARJO, AMPELGADING";
+    alert('SAYA TINGGAL DI DESA PRAMUKA LEBAKHARJO AMPELGADING');
 });
 
 // Event Listener saat tombol Jurusan diklik
 btnJurusan.addEventListener('click', function() {
-    infoText.innerHTML = "<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)";
+    alert('SAYA MEMILIH JURUSAN TKJ (TEKNIK KOMPUTER DAN JARINGAN KARENA SAYA INGIN BISA MENGUASAI TEKNIK TERSEBUT');
 });
 
 // Logika Tombol Kirim Salam
@@ -32,5 +32,5 @@ const btnSapa = document.getElementById('btnSapa');
 const pesanSapa = document.getElementById('pesanSapa');
 
 btnSapa.addEventListener('click', function() {
-    pesanSapa.textContent = "Terima kasih sudah menyapa! Salam kenal dari saya, Muiz! ✨";
+    alert('HAI..! TERIMAKASIH TELAH MENGUNJUNGI WEBSITE SAYA SALAM KENAL YAA...!:>');
 });
