@@ -109,7 +109,7 @@
             display: none !important;
         }
 
-        /* Tampilan Halaman Detail (Tab Jawaban) */
+        /* Tampilan Halaman Slide / Tab Detail Baru */
         #detailSection {
             animation: fadeIn 0.4s ease-in-out;
         }
@@ -117,24 +117,39 @@
         .detail-card {
             background-color: #f8fafc;
             border: 2px solid #667eea;
-            padding: 25px 20px;
+            padding: 20px;
             border-radius: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         .detail-title {
-            font-size: 14px;
+            font-size: 12px;
             color: #718096;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: bold;
         }
 
         .detail-content {
-            font-size: 18px;
+            font-size: 16px;
             color: #2d3748;
             font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #cbd5e0;
+        }
+
+        /* Kotak Komentar / Catatan Tambahan */
+        .detail-comment {
+            font-size: 13px;
+            color: #4a5568;
+            background-color: #edf2f7;
+            padding: 10px;
+            border-radius: 8px;
+            font-style: italic;
+            line-height: 1.4;
         }
 
         /* Tombol Kembali */
@@ -182,28 +197,31 @@
             <p class="tagline">Pilih menu di bawah untuk melihat data diri saya!</p>
 
             <div class="button-group">
-                <button onclick="bukaTab('Nama Lengkap', 'MUIZ ADKHA MAULANA', '👤')">👤 Nama</button>
-                <button onclick="bukaTab('Tempat & Tanggal Lahir', 'MALANG, 21 NOVEMBER 2009', '📅')">📅 TTL</button>
-                <button onclick="bukaTab('Alamat Domisili', 'LEBAKHARJO, AMPELGADING', '🏠')">🏠 Alamat</button>
-                <button onclick="bukaTab('Jurusan Sekolah', 'TKJ (Teknik Komputer dan Jaringan)', '🎓')">🎓 Jurusan</button>
+                <button onclick="bukaTab('Nama Lengkap', 'MUIZ ADKHA MAULANA', 'Nama lengkap saya, biasa dipanggil Muiz. Senang bisa berkenalan dengan teman-teman semua di sini!', '👤')">👤 Nama</button>
+                <button onclick="bukaTab('Tempat & Tanggal Lahir', 'MALANG, 21 NOVEMBER 2009', 'Lahir di Kota Malang dan bangga menjadi bagian dari arek Malang.', '📅')">📅 TTL</button>
+                <button onclick="bukaTab('Alamat Domisili', 'LEBAKHARJO, AMPELGADING', 'Tinggal di daerah Lebakharjo, Ampelgading. Suasananya sejuk, asri, dan ramah!', '🏠')">🏠 Alamat</button>
+                <button onclick="bukaTab('Jurusan Sekolah', 'TKJ (Teknik Komputer dan Jaringan)', 'Sebagai anak TKJ, saya belajar merakit jaringan sekaligus mengeksplorasi web development seperti ini!', '🎓')">🎓 Jurusan</button>
             </div>
 
             <button class="btn-sapa" onclick="sapa()">Kirim Salam 👋</button>
             <p id="pesanSapa"></p>
         </div>
 
-        <!-- BAGIAN 2: HALAMAN DETAIL / TAB JAWABAN (MUNCUL SAAT DIKLIK) -->
+        <!-- BAGIAN 2: SLIDE / TAB DETAIL BARU (LENGKAP DENGAN KOMENTAR) -->
         <div id="detailSection" class="hidden">
             <div class="profile-pic">
                 <img src="https://via.placeholder.com/150" alt="Foto Profil">
             </div>
             
             <h1 id="tabIconTitle">Detail Informasi</h1>
-            <p class="tagline">Informasi data diri Muiz Adkha Maulana</p>
+            <p class="tagline">Slide Biodata Interaktif</p>
 
             <div class="detail-card">
                 <div class="detail-title" id="judulKategori">KATEGORI</div>
                 <div class="detail-content" id="isiJawaban">Isi jawaban akan tampil di sini</div>
+                
+                <div class="detail-title">💬 Komentar / Catatan:</div>
+                <div class="detail-comment" id="isiKomentar">Komentar tambahan akan tampil di sini</div>
             </div>
 
             <button class="btn-back" onclick="kembaliKeMenu()">⬅ Kembali ke Menu Utama</button>
@@ -211,34 +229,36 @@
 
     </div>
 
-    <!-- Kode JavaScript untuk Mengatur Perpindahan Halaman -->
+    <!-- Kode JavaScript Pengatur Slide & Komentar -->
     <script>
-        function bukaTab(kategori, jawaban, ikon) {
+        function bukaTab(kategori, jawaban, komentar, ikon) {
             // 1. Sembunyikan Menu Utama
             document.getElementById('mainMenu').classList.add('hidden');
             
-            // 2. Masukkan data teks ke dalam halaman detail
+            // 2. Masukkan data teks, jawaban, dan komentar ke dalam slide baru
             document.getElementById('judulKategori').textContent = kategori;
             document.getElementById('isiJawaban').textContent = jawaban;
+            document.getElementById('isiKomentar.textContent', komentar); // Diperbaiki di bawah
+            document.getElementById('isiKomentar').textContent = '"' + komentar + '"';
             document.getElementById('tabIconTitle').textContent = ikon + " " + kategori;
 
-            // 3. Tampilkan Halaman Detail
+            // 3. Tampilkan Slide Detail Baru
             document.getElementById('detailSection').classList.remove('hidden');
         }
 
         function kembaliKeMenu() {
-            // 1. Sembunyikan Halaman Detail
+            // 1. Sembunyikan Slide Detail
             document.getElementById('detailSection').classList.add('hidden');
             
             // 2. Tampilkan Kembali Menu Utama
             document.getElementById('mainMenu').classList.remove('hidden');
             
-            // Bersihkan pesan sapaan jika ada
+            // Bersihkan pesan sapaan
             document.getElementById('pesanSapa').textContent = "";
         }
 
         function sapa() {
-            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Semangat ya! ✨";
+            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Semangat belajarnya ya! ✨";
         }
     </script>
 </body>
