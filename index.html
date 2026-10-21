@@ -4,25 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biodata Interaktif - Muiz Adkha Maulana</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+        }
+
+        .profile-pic img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        /* Tata Letak Tombol Grid (2x2) */
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button-group button {
+            background-color: #f0f3ff;
+            color: #4a5568;
+            border: 2px solid #667eea;
+            padding: 12px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .button-group button:hover {
+            background-color: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Kotak Tampilan Informasi */
+        .info-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #infoText {
+            font-size: 14px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        /* Tombol Sapa Tambahan */
+        .btn-sapa {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.2s;
+            width: 100%;
+        }
+
+        .btn-sapa:hover {
+            opacity: 0.9;
+        }
+
+        #pesanSapa {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
     <div class="card-container">
-        <!-- Foto Profil -->
+        <!-- Foto Profil Placeholder -->
         <div class="profile-pic">
             <img src="https://via.placeholder.com/150" alt="Foto Profil">
         </div>
 
         <h1>Halo! Selamat Datang 👋</h1>
-        <p class="tagline">Klik tombol di bawah untuk mengenal saya lebih jauh!</p>
+        <p class="tagline">Klik tombol di bawah untuk melihat informasi saya!</p>
 
-        <!-- Area Tombol Interaktif (Tanpa onclick di HTML) -->
+        <!-- Area Tombol Interaktif -->
         <div class="button-group">
-            <button id="btnNama">👤 Nama</button>
-            <button id="btnTtl">📅 Tempat & Tgl Lahir</button>
-            <button id="btnAlamat">🏠 Alamat</button>
-            <button id="btnJurusan">🎓 Jurusan</button>
+            <button onclick="bukaInfo('<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA')">👤 Nama</button>
+            <button onclick="bukaInfo('<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009')">📅 Tempat & Tgl Lahir</button>
+            <button onclick="bukaInfo('<b>Alamat:</b> LEBAKHARJO, AMPELGADING')">🏠 Alamat</button>
+            <button onclick="bukaInfo('<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)')">🎓 Jurusan</button>
         </div>
 
         <!-- Kotak Hasil Informasi -->
@@ -31,11 +149,34 @@
         </div>
 
         <!-- Tombol Sapa Tambahan -->
-        <button id="btnSapa" class="btn-sapa">Kirim Salam 👋</button>
+        <button class="btn-sapa" onclick="sapa()">Kirim Salam 👋</button>
         <p id="pesanSapa"></p>
     </div>
 
-    <!-- Panggil file JavaScript -->
-    <script src="script.js"></script>
+    <!-- Kode JavaScript Langsung Di Sini -->
+    <script>
+        function bukaInfo(teks) {
+            // 1. Ubah teks jawaban
+            const infoText = document.getElementById('infoText');
+            infoText.innerHTML = teks;
+
+            // 2. Efek highlight/animasi pada kotak jawaban
+            const infoBox = document.getElementById('infoBox');
+            infoBox.style.backgroundColor = '#e0e7ff';
+            setTimeout(function() {
+                infoBox.style.backgroundColor = '#f8fafc';
+            }, 300);
+
+            // 3. Otomatis geser/scroll ke arah kotak jawaban secara mulus
+            infoBox.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }
+
+        function sapa() {
+            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Salam kenal dari saya, Muiz! ✨";
+        }
+    </script>
 </body>
 </html>
