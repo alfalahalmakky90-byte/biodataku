@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Interaktif - Nama Anda</title>
+    <title>Biodata Interaktif - Profil Saya</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,20 +14,25 @@
             <img src="https://via.placeholder.com/150" alt="Foto Profil">
         </div>
 
-        <!-- Informasi Utama -->
-        <h1>Halo, Saya <span id="typing-name">Nama Anda</span></h1>
-        <p class="tagline">Pelajar / Developer Pemula / Enthusiast Teknologi</p>
+        <h1>Halo! Selamat Datang 👋</h1>
+        <p class="tagline">Klik tombol di bawah untuk mengenal saya lebih jauh!</p>
 
-        <!-- Bagian Biodata -->
-        <div class="bio-details">
-            <div class="info-item"><strong>Asal:</strong> Kota Anda</div>
-            <div class="info-item"><strong>Hobi:</strong> Ngoding, Membaca, Olahraga</div>
-            <div class="info-item"><strong>Cita-cita:</strong> Menjadi Software Engineer</div>
+        <!-- Area Tombol Interaktif -->
+        <div class="button-group">
+            <button onclick="tampilkanInfo('nama')">👤 Nama</button>
+            <button onclick="tampilkanInfo('ttl')">📅 Tempat & Tgl Lahir</button>
+            <button onclick="tampilkanInfo('alamat')">🏠 Alamat</button>
+            <button onclick="tampilkanInfo('jurusan')">🎓 Jurusan</button>
         </div>
 
-        <!-- Tombol Interaktif -->
-        <button id="sapaButton">Klik untuk Sapa Saya!</button>
-        <p id="pesanInteraktif"></p>
+        <!-- Kotak Hasil Informasi -->
+        <div class="info-box" id="infoBox">
+            <p id="infoText">Pilih salah satu tombol di atas untuk melihat detail data diri saya!</p>
+        </div>
+
+        <!-- Tombol Sapa Tambahan -->
+        <button id="btnSapa" class="btn-sapa">Kirim Salam 👋</button>
+        <p id="pesanSapa"></p>
     </div>
 
     <script src="script.js"></script>
