@@ -9,22 +9,22 @@ const btnJurusan = document.getElementById('btnJurusan');
 
 // Event Listener saat tombol Nama diklik
 btnNama.addEventListener('click', function() {
-    alert('HAI NAMA SAYA  MUIZ ADKHA MAULANA KERAP DINPANGGIL MUIS');
+    infotext('HAI NAMA SAYA  MUIZ ADKHA MAULANA KERAP DINPANGGIL MUIS');
 });
 
 // Event Listener saat tombol Tempat & Tgl Lahir diklik
 btnTtl.addEventListener('click', function() {
-    alert('SAYA LAHIR DI MALANG, 21 NOVEMBER 2009');
+    infotext('SAYA LAHIR DI MALANG, 21 NOVEMBER 2009');
 });
 
 // Event Listener saat tombol Alamat diklik
 btnAlamat.addEventListener('click', function() {
-    alert('SAYA TINGGAL DI DESA PRAMUKA LEBAKHARJO AMPELGADING');
+    infotex('SAYA TINGGAL DI DESA PRAMUKA LEBAKHARJO AMPELGADING');
 });
 
 // Event Listener saat tombol Jurusan diklik
 btnJurusan.addEventListener('click', function() {
-    alert('SAYA MEMILIH JURUSAN TKJ (TEKNIK KOMPUTER DAN JARINGAN KARENA SAYA INGIN BISA MENGUASAI TEKNIK TERSEBUT');
+    infotext('SAYA MEMILIH JURUSAN TKJ (TEKNIK KOMPUTER DAN JARINGAN KARENA SAYA INGIN BISA MENGUASAI TEKNIK TERSEBUT');
 });
 
 // Logika Tombol Kirim Salam
