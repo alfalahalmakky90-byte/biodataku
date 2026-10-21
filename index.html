@@ -3,33 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kafe Senja - Menu Digital</title>
+    <title>Biodata Interaktif - Nama Anda</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header / Banner Kafe -->
-    <header>
-        <h1>☕ Kafe Senja</h1>
-        <p>Silakan pilih menu favoritmu di bawah ini!</p>
-    </header>
+    <div class="card-container">
+        <!-- Foto Profil -->
+        <div class="profile-pic">
+            <img src="https://via.placeholder.com/150" alt="Foto Profil">
+        </div>
 
-    <!-- Kategori Menu -->
-    <nav class="category-nav">
-        <button class="cat-btn active" onclick="filterMenu('all')">Semua</button>
-        <button class="cat-btn" onclick="filterMenu('makanan')">Makanan</button>
-        <button class="cat-btn" onclick="filterMenu('minuman')">Minuman</button>
-    </nav>
+        <!-- Informasi Utama -->
+        <h1>Halo, Saya <span id="typing-name">Nama Anda</span></h1>
+        <p class="tagline">Pelajar / Developer Pemula / Enthusiast Teknologi</p>
 
-    <!-- Daftar Menu -->
-    <main class="menu-container" id="menuContainer">
-        <!-- Data menu akan dimasukkan otomatis melalui JavaScript -->
-    </main>
+        <!-- Bagian Biodata -->
+        <div class="bio-details">
+            <div class="info-item"><strong>Asal:</strong> Kota Anda</div>
+            <div class="info-item"><strong>Hobi:</strong> Ngoding, Membaca, Olahraga</div>
+            <div class="info-item"><strong>Cita-cita:</strong> Menjadi Software Engineer</div>
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Kafe Senja. Powered by MenuKu.</p>
-    </footer>
+        <!-- Tombol Interaktif -->
+        <button id="sapaButton">Klik untuk Sapa Saya!</button>
+        <p id="pesanInteraktif"></p>
+    </div>
 
     <script src="script.js"></script>
 </body>
