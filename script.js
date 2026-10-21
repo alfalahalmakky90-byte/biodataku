@@ -1,5 +1,6 @@
-// Ambil elemen teks informasi
+// Ambil elemen teks informasi dan kotak informasi
 const infoText = document.getElementById('infoText');
+const infoBox = document.getElementById('infoBox'); // Tambahan untuk target scroll
 
 // Ambil elemen-elemen tombol berdasarkan ID
 const btnNama = document.getElementById('btnNama');
@@ -7,24 +8,35 @@ const btnTtl = document.getElementById('btnTtl');
 const btnAlamat = document.getElementById('btnAlamat');
 const btnJurusan = document.getElementById('btnJurusan');
 
+// Fungsi pembantu untuk mengubah teks sekaligus menggulir layar otomatis ke kotak info
+function tampilkanDanGeser(teks) {
+    infoText.innerHTML = teks;
+    
+    // Perintah otomatis pindah/scroll ke kotak jawaban dengan mulus (smooth)
+    infoBox.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+    });
+}
+
 // Event Listener saat tombol Nama diklik
 btnNama.addEventListener('click', function() {
-    infotext('HAI NAMA SAYA  MUIZ ADKHA MAULANA KERAP DINPANGGIL MUIS');
+    tampilkanDanGeser("<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA");
 });
 
 // Event Listener saat tombol Tempat & Tgl Lahir diklik
 btnTtl.addEventListener('click', function() {
-    infotext('SAYA LAHIR DI MALANG, 21 NOVEMBER 2009');
+    tampilkanDanGeser("<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009");
 });
 
 // Event Listener saat tombol Alamat diklik
 btnAlamat.addEventListener('click', function() {
-    infotex('SAYA TINGGAL DI DESA PRAMUKA LEBAKHARJO AMPELGADING');
+    tampilkanDanGeser("<b>Alamat:</b> LEBAKHARJO, AMPELGADING");
 });
 
 // Event Listener saat tombol Jurusan diklik
 btnJurusan.addEventListener('click', function() {
-    infotext('SAYA MEMILIH JURUSAN TKJ (TEKNIK KOMPUTER DAN JARINGAN KARENA SAYA INGIN BISA MENGUASAI TEKNIK TERSEBUT');
+    tampilkanDanGeser("<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)");
 });
 
 // Logika Tombol Kirim Salam
@@ -32,5 +44,5 @@ const btnSapa = document.getElementById('btnSapa');
 const pesanSapa = document.getElementById('pesanSapa');
 
 btnSapa.addEventListener('click', function() {
-    alert('HAI..! TERIMAKASIH TELAH MENGUNJUNGI WEBSITE SAYA SALAM KENAL YAA...!:>');
+    pesanSapa.textContent = "Terima kasih sudah menyapa! Salam kenal dari saya, Muiz! ✨";
 });
