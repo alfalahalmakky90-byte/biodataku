@@ -1,48 +1,95 @@
-// Ambil elemen teks informasi dan kotak informasi
-const infoText = document.getElementById('infoText');
-const infoBox = document.getElementById('infoBox'); // Tambahan untuk target scroll
+<script>
+        // DATA SLIDE SESUAI PERMINTAAN
+        const daftarSlide = [
+            {
+                kategori: "Nama",
+                jawaban: "MUIZ ADKHA MAULANA",
+                komentar: "Nama panggilan saya Muiz. Senang bisa berkenalan dengan kalian semua di SMA Plus Alfalah Almakky!",
+                ikon: "👤"
+            },
+            {
+                kategori: "TTL",
+                jawaban: "MALANG, 21 NOVEMBER 2009",
+                komentar: "Lahir dan tumbuh di Malang. Salam hangat dari Arek Malang untuk teman-teman semua!",
+                ikon: "📅"
+            },
+            {
+                kategori: "Alamat",
+                jawaban: "LEBAKHARJO, AMPELGADING",
+                komentar: "Tinggal di kawasan Lebakharjo, Ampelgading yang udaranya sejuk, asri, dan ramah lingkungan.",
+                ikon: "🏠"
+            },
+            {
+                kategori: "Jurusan",
+                jawaban: "TKJ (Teknik Komputer dan Jaringan)",
+                komentar: "Di TKJ tidak hanya belajar merakit jaringan & hardware, tapi juga mengasah skill coding web!",
+                ikon: "🎓"
+            },
+            {
+                kategori: "Alasan Memilih TKJ",
+                jawaban: "ALASAN SAYA MEMILIH JURUSAN TKJ YAITU UNTUK MEMPELAJARI CARA KERJA SISTEM KOMPUTASI DAN BISA BERPIKIR SECARA KOMPUTASIONAL AGAR SAYA BISA MENGEMBANGKAN BANYAK WEBSITE MAUPUN APLIKASI YANG MUNGKIN BISA BERGUNA UNTUK SAYA ATAUPUN MASYARAKAT NANTI",
+                komentar: "Visi yang sangat visioner! Dengan kemampuan computational thinking, Muiz siap membangun teknologi berguna bagi masyarakat. 'With great power comes great responsibility!'",
+                ikon: "💡"
+            },
+            {
+                kategori: "PENUTUP",
+                jawaban: "SEKIAN DARI SAYA ASSALAMUALAIKUM WR. WB.",
+                komentar: "Terima kasih banyak atas perhatian teman-teman dan Bapak/Ibu guru SMA Plus Alfalah Almakky. Semoga menginspirasi!",
+                ikon: "🎬"
+            }
+        ];
 
-// Ambil elemen-elemen tombol berdasarkan ID
-const btnNama = document.getElementById('btnNama');
-const btnTtl = document.getElementById('btnTtl');
-const btnAlamat = document.getElementById('btnAlamat');
-const btnJurusan = document.getElementById('btnJurusan');
+        let indexSlideAktif = 0;
 
-// Fungsi pembantu untuk mengubah teks sekaligus menggulir layar otomatis ke kotak info
-function tampilkanDanGeser(teks) {
-    infoText.innerHTML = teks;
-    
-    // Perintah otomatis pindah/scroll ke kotak jawaban dengan mulus (smooth)
-    infoBox.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
-    });
-}
+        function mulaiSlide(index) {
+            indexSlideAktif = index;
+            tampilkanSlide();
+            document.getElementById('mainMenu').classList.add('hidden');
+            document.getElementById('slideSection').classList.remove('hidden');
+        }
 
-// Event Listener saat tombol Nama diklik
-btnNama.addEventListener('click', function() {
-    tampilkanDanGeser("<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA");
-});
+        function tampilkanSlide() {
+            const slide = daftarSlide[indexSlideAktif];
+            
+            document.getElementById('slideBadgeText').textContent = `SLIDE ${indexSlideAktif + 1} DARI ${daftarSlide.length}`;
+            document.getElementById('judulKategori').innerHTML = `${slide.ikon} ${slide.kategori.toUpperCase()}`;
+            document.getElementById('isiJawaban').textContent = slide.jawaban;
+            document.getElementById('isiKomentar').textContent = slide.komentar;
 
-// Event Listener saat tombol Tempat & Tgl Lahir diklik
-btnTtl.addEventListener('click', function() {
-    tampilkanDanGeser("<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009");
-});
+            const btnNext = document.getElementById('btnNextText');
+            if (indexSlideAktif === daftarSlide.length - 1) {
+                btnNext.textContent = "🔄 Selesai & Ulangi dari Awal";
+            } else {
+                btnNext.textContent = "➡ Slide Berikutnya";
+            }
 
-// Event Listener saat tombol Alamat diklik
-btnAlamat.addEventListener('click', function() {
-    tampilkanDanGeser("<b>Alamat:</b> LEBAKHARJO, AMPELGADING");
-});
+            // Trigger smooth animation
+            const slideSec = document.getElementById('slideSection');
+            slideSec.classList.remove('slide-fade');
+            void slideSec.offsetWidth; // Trigger reflow
+            slideSec.classList.add('slide-fade');
+        }
 
-// Event Listener saat tombol Jurusan diklik
-btnJurusan.addEventListener('click', function() {
-    tampilkanDanGeser("<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)");
-});
+        function slideBerikutnya() {
+            if (indexSlideAktif < daftarSlide.length - 1) {
+                indexSlideAktif++;
+                tampilkanSlide();
+            } else {
+                indexSlideAktif = 0;
+                tampilkanSlide();
+            }
+        }
 
-// Logika Tombol Kirim Salam
-const btnSapa = document.getElementById('btnSapa');
-const pesanSapa = document.getElementById('pesanSapa');
+        function kembaliKeMenu() {
+            document.getElementById('slideSection').classList.add('hidden');
+            document.getElementById('mainMenu').classList.remove('hidden');
+            document.getElementById('pesanSapa').textContent = "";
+        }
 
-btnSapa.addEventListener('click', function() {
-    pesanSapa.textContent = "Terima kasih sudah menyapa! Salam kenal dari saya, Muiz! ✨";
-});
+        function sapa() {
+            const pesan = document.getElementById('pesanSapa');
+            pesan.textContent = "Halo! Terima kasih sudah menyapa! Salam Spider-Tech dari Muiz! 🕷️✨";
+        }
+    </script>
+</body>
+</html>
