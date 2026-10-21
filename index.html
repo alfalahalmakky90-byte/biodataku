@@ -1,255 +1,41 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Interaktif - Muiz Adkha Maulana</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .card-container {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-            text-align: center;
-            max-width: 420px;
-            width: 100%;
-        }
-
-        .profile-pic img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #667eea;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 22px;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .tagline {
-            color: #666;
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        /* Menu Utama (Tombol-tombol) */
-        .button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .button-group button {
-            background-color: #f0f3ff;
-            color: #4a5568;
-            border: 2px solid #667eea;
-            padding: 12px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .button-group button:hover {
-            background-color: #667eea;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Tombol Sapa */
-        .btn-sapa {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-            transition: opacity 0.2s;
-            width: 100%;
-        }
-
-        .btn-sapa:hover {
-            opacity: 0.9;
-        }
-
-        #pesanSapa {
-            margin-top: 10px;
-            font-size: 13px;
-            color: #28a745;
-            font-weight: bold;
-        }
-
-        /* Kelas Sembunyi */
-        .hidden {
-            display: none !important;
-        }
-
-        /* Slide / Tab Detail */
-        #detailSection {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        .detail-card {
-            background-color: #f8fafc;
-            border: 2px solid #667eea;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .detail-title {
-            font-size: 12px;
-            color: #718096;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .detail-content {
-            font-size: 16px;
-            color: #2d3748;
-            font-weight: bold;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #cbd5e0;
-        }
-
-        .detail-comment {
-            font-size: 13px;
-            color: #4a5568;
-            background-color: #edf2f7;
-            padding: 10px;
-            border-radius: 8px;
-            font-style: italic;
-            line-height: 1.4;
-        }
-
-        /* Tombol Kembali */
-        .btn-back {
-            background-color: #e53e3e;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            transition: background 0.2s ease;
-            width: 100%;
-        }
-
-        .btn-back:hover {
-            background-color: #c53030;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="card-container">
-        
-        <!-- BAGIAN 1: MENU UTAMA -->
-        <div id="mainMenu">
-            <div class="profile-pic">
-                <img src="https://via.placeholder.com/150" alt="Foto Profil">
-            </div>
-
-            <h1>Halo! Selamat Datang 👋</h1>
-            <p class="tagline">Klik tombol di bawah untuk membuka slide informasi!</p>
-
-            <div class="button-group">
-                <button onclick="bukaSlide('Nama Lengkap', 'MUIZ ADKHA MAULANA', 'Nama panggilan saya Muiz. Senang bisa berkenalan dengan kalian semua!', '👤')">👤 Nama</button>
-                <button onclick="bukaSlide('Tempat & Tanggal Lahir', 'MALANG, 21 NOVEMBER 2009', 'Lahir dan besar di Malang. Salam dari arek Malang!', '📅')">📅 TTL</button>
-                <button onclick="bukaSlide('Alamat Domisili', 'LEBAKHARJO, AMPELGADING', 'Tinggal di kawasan Lebakharjo, Ampelgading yang sejuk dan asri.', '🏠')">🏠 Alamat</button>
-                <button onclick="bukaSlide('Jurusan Sekolah', 'TKJ (Teknik Komputer dan Jaringan)', 'Belajar tentang jaringan komputer, hardware, serta dasar pembuatan web!', '🎓')">🎓 Jurusan</button>
-            </div>
-
-            <button class="btn-sapa" onclick="sapa()">Kirim Salam 👋</button>
-            <p id="pesanSapa"></p>
-        </div>
-
-        <!-- BAGIAN 2: SLIDE / TAB DETAIL BARU -->
-        <div id="detailSection" class="hidden">
-            <div class="profile-pic">
-                <img src="https://via.placeholder.com/150" alt="Foto Profil">
-            </div>
-            
-            <h1 id="tabIconTitle">Detail Informasi</h1>
-            <p class="tagline">Slide Biodata Interaktif</p>
-
-            <div class="detail-card">
-                <div class="detail-title" id="judulKategori">KATEGORI</div>
-                <div class="detail-content" id="isiJawaban">Jawaban</div>
-                
-                <div class="detail-title">💬 Komentar / Catatan:</div>
-                <div class="detail-comment" id="isiKomentar">Komentar</div>
-            </div>
-
-            <button class="btn-back" onclick="kembaliKeMenu()">⬅ Kembali ke Menu Utama</button>
-        </div>
-
-    </div>
-
-    <!-- JAVASCRIPT LENGKAP TANPA ERROR -->
-    <script>
-        function bukaSlide(kategori, jawaban, komentar, ikon) {
-            // Sembunyikan menu utama
-            document.getElementById('mainMenu').classList.add('hidden');
-            
-            // Masukkan data ke slide detail
-            document.getElementById('judulKategori').textContent = kategori;
-            document.getElementById('isiJawaban').textContent = jawaban;
-            document.getElementById('isiKomentar').textContent = '"' + komentar + '"';
-            document.getElementById('tabIconTitle').textContent = ikon + " " + kategori;
-
-            // Tampilkan slide detail
-            document.getElementById('detailSection').classList.remove('hidden');
-        }
-
-        function kembaliKeMenu() {
-            // Sembunyikan slide detail
-            document.getElementById('detailSection').classList.add('hidden');
-            
-            // Tampilkan kembali menu utama
-            document.getElementById('mainMenu').classList.remove('hidden');
-            
-            // Bersihkan pesan sapa
-            document.getElementById('pesanSapa').textContent = "";
-        }
-
-        function sapa() {
-            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Salam kenal dari Muiz! ✨";
-        }
+}
     </script>
-</body>
-</html>
+    <style>
+        /* Pattern Spider Web Background Overlay */
+        body {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(220, 38, 38, 0.25) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%);
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
+            Cantarell, sans-serif;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" 
+            width="100" height="100" viewBox="0 0 100 100" opacity="0.06"><path d="M50 0 L50 100 M0 50 
+            L100 50 M14.6 14.6 L85.4 85.4 M14.6 85.4 L85.4 14.6 M50 25 Q32 32 25 50 Q32 68 50 75 Q68 68 75 
+            50 Q68 32 50 25 Z M50 10 Q21 21 10 50 Q21 79 50 90 Q79 79 90 50 Q79 21 50 10 Z" 
+            stroke="%23ef4444" stroke-width="1.2" fill="none"/></svg>');
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* Glassmorphism Card Style */
+        .spidey-card {
+            background: rgba(15, 23, 42, 0.85);
+            border: 2px solid #ef4444;
+            box-shadow: 
+            }
+                }
+                0 0 25px rgba(239, 68, 68, 0.35),
+                0 0 12px rgba(6, 182, 212, 0.2),
+                inset 0 0 15px rgba(239, 68, 68, 0.1);
+            backdrop-filter: blur(12px);
+        }
+        .slide-fade {
+            animation: fadeIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
