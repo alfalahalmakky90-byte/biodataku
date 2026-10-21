@@ -1,24 +1,31 @@
-// Fungsi untuk menampilkan informasi data diri sesuai tombol yang diklik
-function tampilkanInfo(kategori) {
-    const infoText = document.getElementById('infoText');
+// Ambil elemen teks informasi
+const infoText = document.getElementById('infoText');
 
-    switch (kategori) {
-        case 'MUIZ ADKHA MAULANA':
-            infoText.innerHTML = "<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA";
-            break;
-        case 'MALANG, 21 NOVEMBER 2009':
-            infoText.innerHTML = "<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009";
-            break;
-        case 'LEBAKHARJO,AMPELGADING':
-            infoText.innerHTML = "<b>Alamat:</b> LEBAKHARJO, AMPELGADING";
-            break;
-        case 'TKJ(TEKNIK KOMPUTER DAN JARINGAN':
-            infoText.innerHTML = "<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)";
-            break;
-        default:
-            infoText.innerHTML = "Pilih salah satu tombol di atas untuk melihat detail data diri saya!";
-    }
-}
+// Ambil elemen-elemen tombol berdasarkan ID
+const btnNama = document.getElementById('btnNama');
+const btnTtl = document.getElementById('btnTtl');
+const btnAlamat = document.getElementById('btnAlamat');
+const btnJurusan = document.getElementById('btnJurusan');
+
+// Event Listener saat tombol Nama diklik
+btnNama.addEventListener('click', function() {
+    infoText.innerHTML = "<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA";
+});
+
+// Event Listener saat tombol Tempat & Tgl Lahir diklik
+btnTtl.addEventListener('click', function() {
+    infoText.innerHTML = "<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009";
+});
+
+// Event Listener saat tombol Alamat diklik
+btnAlamat.addEventListener('click', function() {
+    infoText.innerHTML = "<b>Alamat:</b> LEBAKHARJO, AMPELGADING";
+});
+
+// Event Listener saat tombol Jurusan diklik
+btnJurusan.addEventListener('click', function() {
+    infoText.innerHTML = "<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)";
+});
 
 // Logika Tombol Kirim Salam
 const btnSapa = document.getElementById('btnSapa');
