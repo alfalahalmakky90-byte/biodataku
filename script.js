@@ -3,16 +3,16 @@ function tampilkanInfo(kategori) {
     const infoText = document.getElementById('infoText');
 
     switch (kategori) {
-        case 'nama':
+        case 'MUIZ ADKHA MAULANA':
             infoText.innerHTML = "<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA";
             break;
-        case 'ttl':
+        case 'MALANG, 21 NOVEMBER 2009':
             infoText.innerHTML = "<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009";
             break;
-        case 'alamat':
+        case 'LEBAKHARJO,AMPELGADING':
             infoText.innerHTML = "<b>Alamat:</b> LEBAKHARJO, AMPELGADING";
             break;
-        case 'jurusan':
+        case 'TKJ(TEKNIK KOMPUTER DAN JARINGAN':
             infoText.innerHTML = "<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)";
             break;
         default:
