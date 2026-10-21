@@ -29,6 +29,7 @@
             text-align: center;
             max-width: 420px;
             width: 100%;
+            transition: all 0.3s ease;
         }
 
         .profile-pic img {
@@ -52,7 +53,7 @@
             margin-bottom: 20px;
         }
 
-        /* Tata Letak Tombol Grid (2x2) */
+        /* Tampilan Menu Utama (Tombol-tombol) */
         .button-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -78,27 +79,7 @@
             transform: translateY(-2px);
         }
 
-        /* Kotak Tampilan Informasi */
-        .info-box {
-            background-color: #f8fafc;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            border-radius: 8px;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        #infoText {
-            font-size: 14px;
-            color: #2d3748;
-            font-weight: 500;
-        }
-
-        /* Tombol Sapa Tambahan */
+        /* Tombol Sapa */
         .btn-sapa {
             background: linear-gradient(135deg, #28a745, #20c997);
             color: white;
@@ -122,60 +103,142 @@
             color: #28a745;
             font-weight: bold;
         }
+
+        /* Kelas untuk Menyembunyikan Elemen */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Tampilan Halaman Detail (Tab Jawaban) */
+        #detailSection {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .detail-card {
+            background-color: #f8fafc;
+            border: 2px solid #667eea;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .detail-title {
+            font-size: 14px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .detail-content {
+            font-size: 18px;
+            color: #2d3748;
+            font-weight: bold;
+        }
+
+        /* Tombol Kembali */
+        .btn-back {
+            background-color: #e53e3e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-back:hover {
+            background-color: #c53030;
+        }
+
+        /* Animasi Transisi Halus */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="card-container">
-        <!-- Foto Profil Placeholder -->
-        <div class="profile-pic">
-            <img src="https://via.placeholder.com/150" alt="Foto Profil">
+        
+        <!-- BAGIAN 1: MENU UTAMA (TAMPIL AWAL) -->
+        <div id="mainMenu">
+            <div class="profile-pic">
+                <img src="https://via.placeholder.com/150" alt="Foto Profil">
+            </div>
+
+            <h1>Halo! Selamat Datang 👋</h1>
+            <p class="tagline">Pilih menu di bawah untuk melihat data diri saya!</p>
+
+            <div class="button-group">
+                <button onclick="bukaTab('Nama Lengkap', 'MUIZ ADKHA MAULANA', '👤')">👤 Nama</button>
+                <button onclick="bukaTab('Tempat & Tanggal Lahir', 'MALANG, 21 NOVEMBER 2009', '📅')">📅 TTL</button>
+                <button onclick="bukaTab('Alamat Domisili', 'LEBAKHARJO, AMPELGADING', '🏠')">🏠 Alamat</button>
+                <button onclick="bukaTab('Jurusan Sekolah', 'TKJ (Teknik Komputer dan Jaringan)', '🎓')">🎓 Jurusan</button>
+            </div>
+
+            <button class="btn-sapa" onclick="sapa()">Kirim Salam 👋</button>
+            <p id="pesanSapa"></p>
         </div>
 
-        <h1>Halo! Selamat Datang 👋</h1>
-        <p class="tagline">Klik tombol di bawah untuk melihat informasi saya!</p>
+        <!-- BAGIAN 2: HALAMAN DETAIL / TAB JAWABAN (MUNCUL SAAT DIKLIK) -->
+        <div id="detailSection" class="hidden">
+            <div class="profile-pic">
+                <img src="https://via.placeholder.com/150" alt="Foto Profil">
+            </div>
+            
+            <h1 id="tabIconTitle">Detail Informasi</h1>
+            <p class="tagline">Informasi data diri Muiz Adkha Maulana</p>
 
-        <!-- Area Tombol Interaktif -->
-        <div class="button-group">
-            <button onclick="bukaInfo('<b>Nama Lengkap:</b> MUIZ ADKHA MAULANA')">👤 Nama</button>
-            <button onclick="bukaInfo('<b>Tempat, Tgl Lahir:</b> MALANG, 21 NOVEMBER 2009')">📅 Tempat & Tgl Lahir</button>
-            <button onclick="bukaInfo('<b>Alamat:</b> LEBAKHARJO, AMPELGADING')">🏠 Alamat</button>
-            <button onclick="bukaInfo('<b>Jurusan:</b> TKJ (Teknik Komputer dan Jaringan)')">🎓 Jurusan</button>
+            <div class="detail-card">
+                <div class="detail-title" id="judulKategori">KATEGORI</div>
+                <div class="detail-content" id="isiJawaban">Isi jawaban akan tampil di sini</div>
+            </div>
+
+            <button class="btn-back" onclick="kembaliKeMenu()">⬅ Kembali ke Menu Utama</button>
         </div>
 
-        <!-- Kotak Hasil Informasi -->
-        <div class="info-box" id="infoBox">
-            <p id="infoText">Pilih salah satu tombol di atas untuk melihat detail data diri saya!</p>
-        </div>
-
-        <!-- Tombol Sapa Tambahan -->
-        <button class="btn-sapa" onclick="sapa()">Kirim Salam 👋</button>
-        <p id="pesanSapa"></p>
     </div>
 
-    <!-- Kode JavaScript Langsung Di Sini -->
+    <!-- Kode JavaScript untuk Mengatur Perpindahan Halaman -->
     <script>
-        function bukaInfo(teks) {
-            // 1. Ubah teks jawaban
-            const infoText = document.getElementById('infoText');
-            infoText.innerHTML = teks;
+        function bukaTab(kategori, jawaban, ikon) {
+            // 1. Sembunyikan Menu Utama
+            document.getElementById('mainMenu').classList.add('hidden');
+            
+            // 2. Masukkan data teks ke dalam halaman detail
+            document.getElementById('judulKategori').textContent = kategori;
+            document.getElementById('isiJawaban').textContent = jawaban;
+            document.getElementById('tabIconTitle').textContent = ikon + " " + kategori;
 
-            // 2. Efek highlight/animasi pada kotak jawaban
-            const infoBox = document.getElementById('infoBox');
-            infoBox.style.backgroundColor = '#e0e7ff';
-            setTimeout(function() {
-                infoBox.style.backgroundColor = '#f8fafc';
-            }, 300);
+            // 3. Tampilkan Halaman Detail
+            document.getElementById('detailSection').classList.remove('hidden');
+        }
 
-            // 3. Otomatis geser/scroll ke arah kotak jawaban secara mulus
-            infoBox.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center' 
-            });
+        function kembaliKeMenu() {
+            // 1. Sembunyikan Halaman Detail
+            document.getElementById('detailSection').classList.add('hidden');
+            
+            // 2. Tampilkan Kembali Menu Utama
+            document.getElementById('mainMenu').classList.remove('hidden');
+            
+            // Bersihkan pesan sapaan jika ada
+            document.getElementById('pesanSapa').textContent = "";
         }
 
         function sapa() {
-            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Salam kenal dari saya, Muiz! ✨";
+            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Semangat ya! ✨";
         }
     </script>
 </body>
