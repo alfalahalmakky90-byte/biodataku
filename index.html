@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Senja - Menu Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Banner Kafe -->
+    <header>
+        <h1>☕ Kafe Senja</h1>
+        <p>Silakan pilih menu favoritmu di bawah ini!</p>
+    </header>
+
+    <!-- Kategori Menu -->
+    <nav class="category-nav">
+        <button class="cat-btn active" onclick="filterMenu('all')">Semua</button>
+        <button class="cat-btn" onclick="filterMenu('makanan')">Makanan</button>
+        <button class="cat-btn" onclick="filterMenu('minuman')">Minuman</button>
+    </nav>
+
+    <!-- Daftar Menu -->
+    <main class="menu-container" id="menuContainer">
+        <!-- Data menu akan dimasukkan otomatis melalui JavaScript -->
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kafe Senja. Powered by MenuKu.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
