@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Interaktif - Profil Saya</title>
+    <title>Biodata Interaktif - Muiz Adkha Maulana</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,12 +17,12 @@
         <h1>Halo! Selamat Datang 👋</h1>
         <p class="tagline">Klik tombol di bawah untuk mengenal saya lebih jauh!</p>
 
-        <!-- Area Tombol Interaktif -->
+        <!-- Area Tombol Interaktif (Tanpa onclick di HTML) -->
         <div class="button-group">
-            <button onclick="tampilkanInfo('nama')">👤 Nama</button>
-            <button onclick="tampilkanInfo('ttl')">📅 Tempat & Tgl Lahir</button>
-            <button onclick="tampilkanInfo('alamat')">🏠 Alamat</button>
-            <button onclick="tampilkanInfo('jurusan')">🎓 Jurusan</button>
+            <button id="btnNama">👤 Nama</button>
+            <button id="btnTtl">📅 Tempat & Tgl Lahir</button>
+            <button id="btnAlamat">🏠 Alamat</button>
+            <button id="btnJurusan">🎓 Jurusan</button>
         </div>
 
         <!-- Kotak Hasil Informasi -->
@@ -35,6 +35,7 @@
         <p id="pesanSapa"></p>
     </div>
 
+    <!-- Panggil file JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
