@@ -29,7 +29,6 @@
             text-align: center;
             max-width: 420px;
             width: 100%;
-            transition: all 0.3s ease;
         }
 
         .profile-pic img {
@@ -53,7 +52,7 @@
             margin-bottom: 20px;
         }
 
-        /* Tampilan Menu Utama (Tombol-tombol) */
+        /* Menu Utama (Tombol-tombol) */
         .button-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -104,14 +103,14 @@
             font-weight: bold;
         }
 
-        /* Kelas untuk Menyembunyikan Elemen */
+        /* Kelas Sembunyi */
         .hidden {
             display: none !important;
         }
 
-        /* Tampilan Halaman Slide / Tab Detail Baru */
+        /* Slide / Tab Detail */
         #detailSection {
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         .detail-card {
@@ -141,7 +140,6 @@
             border-bottom: 1px dashed #cbd5e0;
         }
 
-        /* Kotak Komentar / Catatan Tambahan */
         .detail-comment {
             font-size: 13px;
             color: #4a5568;
@@ -170,16 +168,9 @@
             background-color: #c53030;
         }
 
-        /* Animasi Transisi Halus */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
@@ -187,27 +178,27 @@
 
     <div class="card-container">
         
-        <!-- BAGIAN 1: MENU UTAMA (TAMPIL AWAL) -->
+        <!-- BAGIAN 1: MENU UTAMA -->
         <div id="mainMenu">
             <div class="profile-pic">
                 <img src="https://via.placeholder.com/150" alt="Foto Profil">
             </div>
 
             <h1>Halo! Selamat Datang 👋</h1>
-            <p class="tagline">Pilih menu di bawah untuk melihat data diri saya!</p>
+            <p class="tagline">Klik tombol di bawah untuk membuka slide informasi!</p>
 
             <div class="button-group">
-                <button onclick="bukaTab('Nama Lengkap', 'MUIZ ADKHA MAULANA', 'Nama lengkap saya, biasa dipanggil Muiz. Senang bisa berkenalan dengan teman-teman semua di sini!', '👤')">👤 Nama</button>
-                <button onclick="bukaTab('Tempat & Tanggal Lahir', 'MALANG, 21 NOVEMBER 2009', 'Lahir di Kota Malang dan bangga menjadi bagian dari arek Malang.', '📅')">📅 TTL</button>
-                <button onclick="bukaTab('Alamat Domisili', 'LEBAKHARJO, AMPELGADING', 'Tinggal di daerah Lebakharjo, Ampelgading. Suasananya sejuk, asri, dan ramah!', '🏠')">🏠 Alamat</button>
-                <button onclick="bukaTab('Jurusan Sekolah', 'TKJ (Teknik Komputer dan Jaringan)', 'Sebagai anak TKJ, saya belajar merakit jaringan sekaligus mengeksplorasi web development seperti ini!', '🎓')">🎓 Jurusan</button>
+                <button onclick="bukaSlide('Nama Lengkap', 'MUIZ ADKHA MAULANA', 'Nama panggilan saya Muiz. Senang bisa berkenalan dengan kalian semua!', '👤')">👤 Nama</button>
+                <button onclick="bukaSlide('Tempat & Tanggal Lahir', 'MALANG, 21 NOVEMBER 2009', 'Lahir dan besar di Malang. Salam dari arek Malang!', '📅')">📅 TTL</button>
+                <button onclick="bukaSlide('Alamat Domisili', 'LEBAKHARJO, AMPELGADING', 'Tinggal di kawasan Lebakharjo, Ampelgading yang sejuk dan asri.', '🏠')">🏠 Alamat</button>
+                <button onclick="bukaSlide('Jurusan Sekolah', 'TKJ (Teknik Komputer dan Jaringan)', 'Belajar tentang jaringan komputer, hardware, serta dasar pembuatan web!', '🎓')">🎓 Jurusan</button>
             </div>
 
             <button class="btn-sapa" onclick="sapa()">Kirim Salam 👋</button>
             <p id="pesanSapa"></p>
         </div>
 
-        <!-- BAGIAN 2: SLIDE / TAB DETAIL BARU (LENGKAP DENGAN KOMENTAR) -->
+        <!-- BAGIAN 2: SLIDE / TAB DETAIL BARU -->
         <div id="detailSection" class="hidden">
             <div class="profile-pic">
                 <img src="https://via.placeholder.com/150" alt="Foto Profil">
@@ -218,10 +209,10 @@
 
             <div class="detail-card">
                 <div class="detail-title" id="judulKategori">KATEGORI</div>
-                <div class="detail-content" id="isiJawaban">Isi jawaban akan tampil di sini</div>
+                <div class="detail-content" id="isiJawaban">Jawaban</div>
                 
                 <div class="detail-title">💬 Komentar / Catatan:</div>
-                <div class="detail-comment" id="isiKomentar">Komentar tambahan akan tampil di sini</div>
+                <div class="detail-comment" id="isiKomentar">Komentar</div>
             </div>
 
             <button class="btn-back" onclick="kembaliKeMenu()">⬅ Kembali ke Menu Utama</button>
@@ -229,36 +220,35 @@
 
     </div>
 
-    <!-- Kode JavaScript Pengatur Slide & Komentar -->
+    <!-- JAVASCRIPT LENGKAP TANPA ERROR -->
     <script>
-        function bukaTab(kategori, jawaban, komentar, ikon) {
-            // 1. Sembunyikan Menu Utama
+        function bukaSlide(kategori, jawaban, komentar, ikon) {
+            // Sembunyikan menu utama
             document.getElementById('mainMenu').classList.add('hidden');
             
-            // 2. Masukkan data teks, jawaban, dan komentar ke dalam slide baru
+            // Masukkan data ke slide detail
             document.getElementById('judulKategori').textContent = kategori;
             document.getElementById('isiJawaban').textContent = jawaban;
-            document.getElementById('isiKomentar.textContent', komentar); // Diperbaiki di bawah
             document.getElementById('isiKomentar').textContent = '"' + komentar + '"';
             document.getElementById('tabIconTitle').textContent = ikon + " " + kategori;
 
-            // 3. Tampilkan Slide Detail Baru
+            // Tampilkan slide detail
             document.getElementById('detailSection').classList.remove('hidden');
         }
 
         function kembaliKeMenu() {
-            // 1. Sembunyikan Slide Detail
+            // Sembunyikan slide detail
             document.getElementById('detailSection').classList.add('hidden');
             
-            // 2. Tampilkan Kembali Menu Utama
+            // Tampilkan kembali menu utama
             document.getElementById('mainMenu').classList.remove('hidden');
             
-            // Bersihkan pesan sapaan
+            // Bersihkan pesan sapa
             document.getElementById('pesanSapa').textContent = "";
         }
 
         function sapa() {
-            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Semangat belajarnya ya! ✨";
+            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Salam kenal dari Muiz! ✨";
         }
     </script>
 </body>
