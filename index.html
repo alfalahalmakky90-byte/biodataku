@@ -3,638 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spider-Man Portfolio | Interactive Web</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Biodata Interaktif Spider-Man - Muiz Adkha Maulana</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spidey: {
+                            red: '#ef4444',
+                            darkRed: '#dc2626',
+                            blue: '#1e1b4b',
+                            darkBg: '#0f172a',
+                            cyan: '#06b6d4',
+                            brightCyan: '#22d3ee'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --spidey-red: #e62429;
-            --spidey-blue: #0b3c5d;
-            --spidey-dark: #0a0a0f;
-            --spidey-neon: #00f0ff;
-            --spidey-yellow: #ffcc00;
-            --text-light: #f0f0f5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
+        /* Pattern Spider Web Background Overlay */
         body {
-            background-color: var(--spidey-dark);
-            color: var(--text-light);
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(220, 38, 38, 0.25) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%);
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--spidey-dark);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--spidey-red);
-            border-radius: 4px;
-        }
-
-        /* Header / Navbar */
-        header {
+        body::before {
+            content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 2px solid rgba(230, 36, 41, 0.3);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.06"><path d="M50 0 L50 100 M0 50 L100 50 M14.6 14.6 L85.4 85.4 M14.6 85.4 L85.4 14.6 M50 25 Q32 32 25 50 Q32 68 50 75 Q68 68 75 50 Q68 32 50 25 Z M50 10 Q21 21 10 50 Q21 79 50 90 Q79 79 90 50 Q79 21 50 10 Z" stroke="%23ef4444" stroke-width="1.2" fill="none"/></svg>');
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--spidey-red);
-            text-shadow: 0 0 10px rgba(230, 36, 41, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Glassmorphism Card Style */
+        .spidey-card {
+            background: rgba(15, 23, 42, 0.85);
+            border: 2px solid #ef4444;
+            box-shadow: 
+                0 0 25px rgba(239, 68, 68, 0.35),
+                0 0 12px rgba(6, 182, 212, 0.2),
+                inset 0 0 15px rgba(239, 68, 68, 0.1);
+            backdrop-filter: blur(12px);
         }
 
-        .logo i {
-            color: var(--spidey-neon);
+        .slide-fade {
+            animation: fadeIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 600;
-            transition: 0.3s;
-            font-size: 0.95rem;
-        }
-
-        nav ul li a:hover {
-            color: var(--spidey-red);
-            text-shadow: 0 0 8px var(--spidey-red);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10%;
-            position: relative;
-            background: radial-gradient(circle at center, #151a2d 0%, var(--spidey-dark) 80%);
-        }
-
-        .hero-content {
-            max-width: 600px;
-            z-index: 2;
-        }
-
-        .hero-content h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--spidey-neon);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero-content h1 span {
-            color: var(--spidey-red);
-            text-shadow: 0 0 15px rgba(230, 36, 41, 0.6);
-        }
-
-        .hero-content p {
-            color: #b0b0c0;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: 0.3s;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background-color: var(--spidey-red);
-            color: white;
-            box-shadow: 0 0 15px rgba(230, 36, 41, 0.4);
-            border: 2px solid var(--spidey-red);
-        }
-
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--spidey-red);
-            box-shadow: 0 0 25px rgba(230, 36, 41, 0.8);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--spidey-neon);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--spidey-neon);
-            color: var(--spidey-dark);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
-        }
-
-        /* Hero Image / Mask Graphic Simulation */
-        .hero-graphic {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        .spidey-badge {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--spidey-red), #900c11);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 50px rgba(230, 36, 41, 0.5);
-            animation: floatBadge 4s ease-in-out infinite;
-            border: 4px solid var(--spidey-neon);
-        }
-
-        .spidey-badge i {
-            font-size: 8rem;
-            color: var(--text-light);
-            text-shadow: 0 0 20px rgba(0,0,0,0.8);
-        }
-
-        @keyframes floatBadge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* Sections General */
-        section {
-            padding: 100px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-title h2 span {
-            color: var(--spidey-red);
-        }
-
-        .section-title p {
-            color: var(--spidey-neon);
-            font-size: 0.95rem;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-card {
-            background: rgba(20, 20, 30, 0.7);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .about-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--spidey-neon);
-        }
-
-        .about-card p {
-            color: #b0b0c0;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .stat-box {
-            background: rgba(11, 60, 93, 0.3);
-            border: 1px solid var(--spidey-red);
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-box h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            color: var(--spidey-red);
-            margin-bottom: 5px;
-        }
-
-        .stat-box p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Projects / Missions Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: rgba(15, 15, 25, 0.8);
-            border: 1px solid rgba(230, 36, 41, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.4s;
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--spidey-neon);
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
-        }
-
-        .project-header {
-            background: var(--spidey-blue);
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .project-header i {
-            font-size: 1.8rem;
-            color: var(--spidey-red);
-        }
-
-        .project-body {
-            padding: 25px;
-        }
-
-        .project-body h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .project-body p {
-            color: #a0a0b0;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tags span {
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--spidey-neon);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: rgba(15, 15, 25, 0.9);
-            border: 1px solid rgba(230, 36, 41, 0.4);
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--spidey-neon);
-            font-size: 0.9rem;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--text-light);
-            font-family: 'Montserrat', sans-serif;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--spidey-red);
-            box-shadow: 0 0 10px rgba(230, 36, 41, 0.4);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            height: 130px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #050508;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #707080;
-            font-size: 0.9rem;
-        }
-
-        footer span {
-            color: var(--spidey-red);
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                padding-top: 120px;
-                height: auto;
-                padding-bottom: 80px;
-            }
-            .hero-content {
-                max-width: 100%;
-                margin-bottom: 40px;
-            }
-            .btn-group {
-                justify-content: center;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            nav ul {
-                display: none; /* Sederhana untuk mobile */
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
     </style>
 </head>
-<body>
+<body class="flex items-center justify-center p-4 relative text-slate-100">
 
-    <!-- Header / Navbar -->
-    <header>
-        <div class="logo">
-            <i class="fa-solid fa-spider"></i> SPIDEY_DEV
+    <!-- MAIN CONTAINER CARD -->
+    <div class="spidey-card w-full max-w-md rounded-3xl p-6 sm:p-8 text-center relative z-10 transition-all duration-300">
+        
+        <!-- SPIDER BADGE -->
+        <div class="w-16 h-16 bg-red-600 rounded-full mx-auto -mt-12 mb-4 flex items-center justify-center border-4 border-cyan-400 shadow-[0_0_20px_rgba(239,68,68,0.8)]">
+            <svg class="w-9 h-9 fill-white" viewBox="0 0 24 24">
+                <path d="M12,2L14.5,7.5L20,5L17.5,10.5 L22,13L16.5,14.5L18,21L12,17L6,21L7.5,14.5L2,13L6.5,10.5L4,5L9.5,7.5L12,2Z"/>
+            </svg>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#missions">Missions</a></li>
-                <li><a href="#contact">Signal S.O.S</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h3>FRIENDLY NEIGHBORHOOD WEB DEVELOPER</h3>
-            <h1>Building The Web with <span>Great Power</span> & Great Code.</h1>
-            <p>Halo, saya seorang pengembang web kreatif yang siap beraksi menjelajahi linimasa digital, merajut barisan kode tangguh untuk solusi web Anda.</p>
-            <div class="btn-group">
-                <a href="#missions" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Lihat Misi</a>
-                <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-satellite-dish"></i> Hubungi Saya</a>
-            </div>
+        <!-- PROFILE HERO HEADER -->
+        <div class="relative inline-block mb-3">
+            <img src="https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=300&q=80" 
+                 alt="Profile Muiz" 
+                 class="w-28 h-28 rounded-full object-cover border-4 border-red-500 shadow-[0_0_18px_rgba(239,68,68,0.6)] bg-slate-800 mx-auto">
+            <span class="absolute bottom-1 right-1 bg-slate-900 border border-cyan-400 rounded-full p-1 text-xs shadow-md">🕷️</span>
         </div>
-        <div class="hero-graphic">
-            <div class="spidey-badge">
-                <i class="fa-solid fa-spider"></i>
-            </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="section-title">
-            <h2>Tentang <span>Karakter</span></h2>
-            <p>// IDENTITY DOSSIER</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-card">
-                <h3>Asal-Usul & Keahlian</h3>
-                <p>Bagaimana laba-laba radioaktif mengubah segalanya? Dalam dunia pemrograman, gigitan itu adalah rasa penasaran mendalam terhadap teknologi web modern, UI/UX interaktif, serta performa aplikasi yang secepat jaring meluncur.</p>
-                <p>Berpengalaman merancang antarmuka yang bersih, responsif, dinamis, serta mengutamakan kenyamanan pengguna (User Experience).</p>
-            </div>
-            <div class="stats-container">
-                <div class="stat-box">
-                    <h4>25+</h4>
-                    <p>Misi Selesai</p>
+        <h1 class="text-2xl font-extrabold tracking-wider text-white drop-shadow-[0_0_10px_rgba(239,68,68,0.6)] mb-1">
+            MUIZ ADKHA MAULANA
+        </h1>
+        <p class="text-xs font-semibold text-cyan-400 tracking-wide uppercase mb-6">
+            TKJ Student | Web Developer Enthusiast | Spider-Man Style
+        </p>
+
+        <!-- INSTAGRAM INTEGRATED SECTION -->
+        <div class="bg-gradient-to-r from-purple-900/40 via-pink-900/40 to-red-900/40 border border-pink-500/40 rounded-2xl p-3.5 mb-6 text-left flex items-center justify-between gap-3 shadow-lg backdrop-blur-md">
+            <div class="flex items-center gap-3 overflow-hidden">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
                 </div>
-                <div class="stat-box">
-                    <h4>3+</h4>
-                    <p>Tahun Pengalaman</p>
-                </div>
-                <div class="stat-box">
-                    <h4>100%</h4>
-                    <p>Dedikasi</p>
-                </div>
-                <div class="stat-box">
-                    <h4>24/7</h4>
-                    <p>Siap Siaga</p>
+                <div class="overflow-hidden">
+                    <p class="font-bold text-sm text-white truncate">@muizadkha ⚡</p>
+                    <p class="text-[11px] text-slate-300 truncate">Instagram Bio • Follow & Connect!</p>
                 </div>
             </div>
+            <a href="https://instagram.com/muizadkha" target="_blank" rel="noopener noreferrer" 
+               class="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white font-bold text-xs px-3.5 py-2 rounded-full transition-all duration-200 transform hover:scale-105 shadow-[0_0_10px_rgba(239,68,68,0.5)] whitespace-nowrap">
+                Follow 📸
+            </a>
         </div>
-    </section>
 
-    <!-- Projects / Missions Section -->
-    <section id="missions" class="missions">
-        <div class="section-title">
-            <h2>Misi <span>Unggulan</span></h2>
-            <p>// ACTIVE PORTFOLIO PROJECTS</p>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <i class="fa-solid fa-globe"></i>
-                    <span>MISSION 01</span>
-                </div>
-                <div class="project-body">
-                    <h3>Spider-Dashboard</h3>
-                    <p>Aplikasi pemantauan data real-time dengan visualisasi grafik interaktif dan gaya futuristik.</p>
-                    <div class="tech-tags">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                        <span>Chart.js</span>
-                    </div>
-                    <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-solid fa-code"></i> Detail Misi</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <i class="fa-solid fa-gamepad"></i>
-                    <span>MISSION 02</span>
-                </div>
-                <div class="project-body">
-                    <h3>Web Game Arena</h3>
-                    <p>Mini-game interaktif berbasis browser yang ringan, responsif, dan adiktif untuk pengguna.</p>
-                    <div class="tech-tags">
-                        <span>JavaScript</span>
-                        <span>Canvas API</span>
-                        <span>Tailwind</span>
-                    </div>
-                    <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-solid fa-code"></i> Detail Misi</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>MISSION 03</span>
-                </div>
-                <div class="project-body">
-                    <h3>E-Commerce Web Store</h3>
-                    <p>Platform toko online modern lengkap dengan sistem keranjang belanja dan transaksi mulus.</p>
-                    <div class="tech-tags">
-                        <span>React.js</span>
-                        <span>Node.js</span>
-                        <span>MongoDB</span>
-                    </div>
-                    <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-solid fa-code"></i> Detail Misi</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-title">
-            <h2>Kirim S.O.S <span>Signal</span></h2>
-            <p>// GET IN TOUCH</p>
-        </div>
-        <div class="contact-container">
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nama / Alias</label>
-                    <input type="text" id="name" placeholder="Masukkan nama Anda..." required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Frekuensi Email</label>
-                    <input type="email" id="email" placeholder="nama@domain.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Pesan / Detail Misi</label>
-                    <textarea id="message" placeholder="Tuliskan detail proyek atau pesan Anda..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                    <i class="fa-solid fa-paper-plane"></i> Kirim Sinyal
+        <!-- MENU UTAMA (MAIN GRID MENU) -->
+        <div id="mainMenu" class="space-y-4">
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="mulaiSlide(0)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
+                    👤 Nama
                 </button>
-            </form>
+                <button onclick="mulaiSlide(1)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
+                    📅 TTL
+                </button>
+                <button onclick="mulaiSlide(2)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
+                    🏠 Alamat
+                </button>
+                <button onclick="mulaiSlide(3)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
+                    🎓 Jurusan
+                </button>
+                <button onclick="mulaiSlide(4)" class="col-span-2 bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
+                    💡 Alasan Memilih TKJ
+                </button>
+                <button onclick="mulaiSlide(5)" class="col-span-2 bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
+                    🎬 Penutup
+                </button>
+            </div>
+
+            <button onclick="sapa()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 hover:text-white font-extrabold py-3 px-4 rounded-full transition duration-200 shadow-[0_0_15px_rgba(6,182,212,0.4)] text-xs uppercase tracking-wider">
+                Kirim Salam 👋
+            </button>
+            <p id="pesanSapa" class="text-cyan-400 font-bold text-xs h-4 transition-all duration-300"></p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 <span>SpideyDev</span>. Dengan kekuatan besar, datang pula tanggung jawab kode yang besar.</p>
-    </footer>
+        <!-- DETAIL SLIDE VIEW -->
+        <div id="slideSection" class="hidden slide-fade">
+            <div class="bg-slate-950/80 border border-cyan-400/80 rounded-2xl p-5 mb-5 text-left relative shadow-[0_0_15px_rgba(6,182,212,0.25)]">
+                <div class="flex items-center justify-between mb-3">
+                    <span id="slideBadgeText" class="bg-red-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_8px_rgba(239,68,68,0.8)]">
+                        SLIDE 1 DARI 6
+                    </span>
+                    <span class="text-cyan-400 text-xs font-semibold">Spider-Sense Info</span>
+                </div>
 
-    <!-- JavaScript Interaktif -->
+                <h2 id="judulKategori" class="text-lg font-extrabold text-white mb-3 flex items-center gap-2">
+                    👤 NAMA
+                </h2>
+
+                <div id="isiJawaban" class="text-sm font-bold text-slate-100 bg-slate-900/90 p-3.5 rounded-xl border border-slate-700/60 mb-4 leading-relaxed">
+                    MUIZ ADKHA MAULANA
+                </div>
+
+                <!-- COMMENTARY BOX -->
+                <div class="bg-red-950/30 border-l-4 border-red-500 p-3 rounded-r-xl">
+                    <p class="text-cyan-400 font-bold text-xs mb-1">💬 Catatan & Komentar Pembaca:</p>
+                    <p id="isiKomentar" class="text-xs text-slate-300 italic leading-relaxed">
+                        Komentar pembaca...
+                    </p>
+                </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="space-y-2.5">
+                <button id="btnNextText" onclick="slideBerikutnya()" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold py-3 px-4 rounded-full transition duration-200 shadow-[0_0_15px_rgba(239,68,68,0.6)] text-xs uppercase tracking-wider">
+                    ➡ Slide Berikutnya
+                </button>
+                <button onclick="kembaliKeMenu()" class="w-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white font-bold py-2.5 px-4 rounded-full border border-slate-600 transition duration-200 text-xs">
+                    ⬅ Kembali ke Menu Utama
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Animasi Sederhana atau Validasi Form saat tombol submit diklik
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            alert(`Terima kasih, ${name}! Sinyal S.O.S Anda telah terkirim ke Spider-Cave. Kami akan segera merespons.`);
-            contactForm.reset();
-        });
-
-        // Efek Interaktif Sederhana pada Scroll (Opsional)
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(10, 10, 15, 0.95)';
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
-            } else {
-                header.style.background = 'rgba(10, 10, 15, 0.85)';
-                header.style.boxShadow = 'none';
+        // DATA SLIDE SESUAI PERMINTAAN
+        const daftarSlide = [
+            {
+                kategori: "Nama",
+                jawaban: "MUIZ ADKHA MAULANA",
+                komentar: "Nama panggilan saya Muiz. Senang bisa berkenalan dengan kalian semua di SMA Plus Alfalah Almakky!",
+                ikon: "👤"
+            },
+            {
+                kategori: "TTL",
+                jawaban: "MALANG, 21 NOVEMBER 2009",
+                komentar: "Lahir dan tumbuh di Malang. Salam hangat dari Arek Malang untuk teman-teman semua!",
+                ikon: "📅"
+            },
+            {
+                kategori: "Alamat",
+                jawaban: "LEBAKHARJO, AMPELGADING",
+                komentar: "Tinggal di kawasan Lebakharjo, Ampelgading yang udaranya sejuk, asri, dan ramah lingkungan.",
+                ikon: "🏠"
+            },
+            {
+                kategori: "Jurusan",
+                jawaban: "TKJ (Teknik Komputer dan Jaringan)",
+                komentar: "Di TKJ tidak hanya belajar merakit jaringan & hardware, tapi juga mengasah skill coding web!",
+                ikon: "🎓"
+            },
+            {
+                kategori: "Alasan Memilih TKJ",
+                jawaban: "ALASAN SAYA MEMILIH JURUSAN TKJ YAITU UNTUK MEMPELAJARI CARA KERJA SISTEM KOMPUTASI DAN BISA BERPIKIR SECARA KOMPUTASIONAL AGAR SAYA BISA MENGEMBANGKAN BANYAK WEBSITE MAUPUN APLIKASI YANG MUNGKIN BISA BERGUNA UNTUK SAYA ATAUPUN MASYARAKAT NANTI",
+                komentar: "Visi yang sangat visioner! Dengan kemampuan computational thinking, Muiz siap membangun teknologi berguna bagi masyarakat. 'With great power comes great responsibility!'",
+                ikon: "💡"
+            },
+            {
+                kategori: "PENUTUP",
+                jawaban: "SEKIAN DARI SAYA ASSALAMUALAIKUM WR. WB.",
+                komentar: "Terima kasih banyak atas perhatian teman-teman dan Bapak/Ibu guru SMA Plus Alfalah Almakky. Semoga menginspirasi!",
+                ikon: "🎬"
             }
-        });
+        ];
+
+        let indexSlideAktif = 0;
+
+        function mulaiSlide(index) {
+            indexSlideAktif = index;
+            tampilkanSlide();
+            document.getElementById('mainMenu').classList.add('hidden');
+            document.getElementById('slideSection').classList.remove('hidden');
+        }
+
+        function tampilkanSlide() {
+            const slide = daftarSlide[indexSlideAktif];
+            
+            document.getElementById('slideBadgeText').textContent = `SLIDE ${indexSlideAktif + 1} DARI ${daftarSlide.length}`;
+            document.getElementById('judulKategori').innerHTML = `${slide.ikon} ${slide.kategori.toUpperCase()}`;
+            document.getElementById('isiJawaban').textContent = slide.jawaban;
+            document.getElementById('isiKomentar').textContent = slide.komentar;
+
+            const btnNext = document.getElementById('btnNextText');
+            if (indexSlideAktif === daftarSlide.length - 1) {
+                btnNext.textContent = "🔄 Selesai & Ulangi dari Awal";
+            } else {
+                btnNext.textContent = "➡ Slide Berikutnya";
+            }
+
+            // Trigger smooth animation
+            const slideSec = document.getElementById('slideSection');
+            slideSec.classList.remove('slide-fade');
+            void slideSec.offsetWidth; // Trigger reflow
+            slideSec.classList.add('slide-fade');
+        }
+
+        function slideBerikutnya() {
+            if (indexSlideAktif < daftarSlide.length - 1) {
+                indexSlideAktif++;
+                tampilkanSlide();
+            } else {
+                indexSlideAktif = 0;
+                tampilkanSlide();
+            }
+        }
+
+        function kembaliKeMenu() {
+            document.getElementById('slideSection').classList.add('hidden');
+            document.getElementById('mainMenu').classList.remove('hidden');
+            document.getElementById('pesanSapa').textContent = "";
+        }
+
+        function sapa() {
+            const pesan = document.getElementById('pesanSapa');
+            pesan.textContent = "Halo! Terima kasih sudah menyapa! Salam Spider-Tech dari Muiz! 🕷️✨";
+        }
     </script>
 </body>
 </html>
