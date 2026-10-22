@@ -1,140 +1,40 @@
-/* Reset & Styling Dasar Tema Spider-Man */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    transition: all 0.3s ease;
-}
+// 1. Fitur Spider-Sense Alert
+const spiderSenseBtn = document.getElementById('spider-sense-btn');
+const heroCard = document.getElementById('hero-card');
 
-body {
-    background-color: #0d1117;
-    background-image: radial-gradient(#21262d 1px, transparent 1px);
-    background-size: 20px 20px;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
+spiderSenseBtn.addEventListener('click', () => {
+    // Tambah kelas animasi
+    heroCard.classList.add('spider-sense-active');
+    
+    // Tampilkan notifikasi
+    alert('⚡ SPIDER-SENSE BERGETAR! Bahaya atau Ide Startup Baru Terdeteksi!');
 
-/* Kartu Biodata */
-.card-container {
-    background: #161b22;
-    border: 3px solid #e62429; /* Merah khas Marvel/Spidey */
-    border-radius: 16px;
-    padding: 30px;
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(230, 36, 41, 0.4);
-    position: relative;
-}
+    // Matikan efek setelah 3 detik
+    setTimeout(() => {
+        heroCard.classList.remove('spider-sense-active');
+    }, 3000);
+});
 
-.badge {
-    background: #e62429;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 4px 12px;
-    border-radius: 12px;
-    display: inline-block;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
+// 2. Fitur Toggle Identitas Rahasia (Peter Parker vs Spider-Man Mode)
+const toggleBtn = document.getElementById('toggle-identity-btn');
+const heroName = document.getElementById('hero-name');
+const heroAlias = document.getElementById('hero-alias');
+const heroBio = document.getElementById('hero-bio');
 
-.avatar-box {
-    margin: 0 auto 15px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 4px solid #0055ff; /* Biru Spider-Man */
-    overflow: hidden;
-}
+let isHeroMode = false;
 
-.avatar-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+toggleBtn.addEventListener('click', () => {
+    isHeroMode = !isHeroMode;
 
-.alias {
-    color: #0088ff;
-    font-size: 0.9rem;
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-.bio-section {
-    background: #21262d;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: left;
-    font-size: 0.9rem;
-    border-left: 4px solid #e62429;
-}
-
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    margin: 15px 0 25px;
-}
-
-.skill-tag {
-    background: #0055ff;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-/* Tombol Aksi */
-.action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.btn {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.btn-warning {
-    background-color: #ffcc00;
-    color: #000;
-}
-
-.btn-primary {
-    background-color: #e62429;
-    color: #fff;
-}
-
-.btn:hover {
-    transform: scale(1.03);
-}
-
-/* Efek Spider-Sense (Animasi Bergetar + Glow) */
-.spider-sense-active {
-    animation: pulse-glow 0.4s infinite alternate;
-    border-color: #ffcc00 !important;
-}
-
-@keyframes pulse-glow {
-    0% {
-        box-shadow: 0 0 15px #ffcc00;
-        transform: translateY(-2px);
+    if (isHeroMode) {
+        heroName.innerText = "Spider-Coder 🕷️";
+        heroAlias.innerText = "Alias: Pahlawan Kode Web";
+        heroBio.innerText = "Menggunakan keyboard untuk membasmi bug dan membangun solusi startup untuk masa depan!";
+        toggleBtn.innerText = "🔄 Kembali ke Identitas Biasa";
+    } else {
+        heroName.innerText = "[Nama Kamu]";
+        heroAlias.innerText = "Alias: The Friendly Neighborhood Developer";
+        heroBio.innerText = `"Dengan kekuatan coding yang besar, datang pula tanggung jawab proyek yang besar!" Saya berfokus pada dunia teknologi.`;
+        toggleBtn.innerText = "🔄 Ubah Identitas Rahasia";
     }
-    100% {
-        box-shadow: 0 0 35px #ffcc00;
-        transform: translateY(2px);
-    }
-}
+});
