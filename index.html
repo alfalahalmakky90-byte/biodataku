@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spider-Bio | Classified Dossier</title>
+    <title>Spider-Bio | MUIZ ADKHA MAULANA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,31 +12,33 @@
         <!-- Badge Status -->
         <div class="badge">CLASSIFIED DOSSIER</div>
 
-        <!-- Profil -->
+        <!-- Profil Header -->
         <div class="profile-header">
             <div class="avatar-box">
                 <img src="https://via.placeholder.com/120" alt="Foto Profil" id="profile-img">
             </div>
-            <h1 id="hero-name">[Nama Kamu]</h1>
-            <p class="alias" id="hero-alias">Alias: The Friendly Neighborhood Developer</p>
+            <h1 id="hero-name">MUIZ ADKHA MAULANA</h1>
+            <p class="alias" id="hero-alias">Classified Agent Dossier</p>
         </div>
 
-        <!-- Bio Section -->
-        <div class="bio-section">
-            <h3>📜 Misi & Biografi</h3>
-            <p id="hero-bio">"Dengan kekuatan coding yang besar, datang pula tanggung jawab proyek yang besar!" Saya berfokus pada dunia teknologi dan pemecahan masalah melalui aplikasi web.</p>
+        <!-- Tombol Data Diri (Informasi Spesifik) -->
+        <div class="info-buttons">
+            <button class="btn-info" onclick="showInfo('Nama Lengkap', 'MUIZ ADKHA MAULANA')">👤 Nama</button>
+            <button class="btn-info" onclick="showInfo('Tanggal Lahir', '21 NOVEMBER 2009')">📅 TTL</button>
+            <button class="btn-info" onclick="showInfo('Alamat Rumah', 'LEBAKHARJO, AMPELGADING')">🏠 Alamat</button>
+            <button class="btn-info" onclick="showInfo('Asal Sekolah', 'SMA PLUS ALFALAH ALMAKKY')">🏫 Sekolah</button>
+            <button class="btn-info" onclick="showInfo('Alamat Sekolah', 'PUTATLOR, GONDANGLEGI')">📍 Lokasi Sekolah</button>
+            <button class="btn-info" onclick="showInfo('Kelas Saat Ini', 'XI-A')">🎓 Kelas</button>
+            <button class="btn-info" onclick="showInfo('Peminatan / Jurusan', 'IPA / INFORMATIKA TINGKAT LANJUT')">💻 Jurusan</button>
         </div>
 
-        <!-- Skills / Kekuatan -->
-        <h3>⚡ Kekuatan / Skillset</h3>
-        <div class="skills">
-            <span class="skill-tag">HTML Web-Slinging</span>
-            <span class="skill-tag">CSS Styling Power</span>
-            <span class="skill-tag">JavaScript Logic</span>
-            <span class="skill-tag">Problem Solving</span>
+        <!-- Display Area Informasi yang Diklik -->
+        <div class="display-box">
+            <span class="display-label" id="info-label">PETUNJUK:</span>
+            <p class="display-value" id="info-value">Klik tombol di atas untuk melihat detail data pahlawan!</p>
         </div>
 
-        <!-- Tombol Interaktif -->
+        <!-- Action Buttons Spider-Man -->
         <div class="action-buttons">
             <button id="spider-sense-btn" class="btn btn-warning">🕷️ Aktifkan Spider-Sense</button>
             <button id="toggle-identity-btn" class="btn btn-primary">🔄 Ubah Identitas Rahasia</button>
