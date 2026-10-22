@@ -1,12 +1,17 @@
+/* Reset & Styling Dasar Tema Spider-Man */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    transition: all 0.3s ease;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: #0d1117;
+    background-image: radial-gradient(#21262d 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,102 +19,122 @@ body {
     padding: 20px;
 }
 
+/* Kartu Biodata */
 .card-container {
-    background: white;
+    background: #161b22;
+    border: 3px solid #e62429; /* Merah khas Marvel/Spidey */
+    border-radius: 16px;
     padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    text-align: center;
     max-width: 420px;
     width: 100%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(230, 36, 41, 0.4);
+    position: relative;
 }
 
-.profile-pic img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #667eea;
+.badge {
+    background: #e62429;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 12px;
+    display: inline-block;
     margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
-h1 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 5px;
+.avatar-box {
+    margin: 0 auto 15px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #0055ff; /* Biru Spider-Man */
+    overflow: hidden;
 }
 
-.tagline {
-    color: #666;
-    font-size: 13px;
+.avatar-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.alias {
+    color: #0088ff;
+    font-size: 0.9rem;
+    font-style: italic;
     margin-bottom: 20px;
 }
 
-/* Tata Letak Tombol Grid (2x2) */
-.button-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.button-group button {
-    background-color: #f0f3ff;
-    color: #4a5568;
-    border: 2px solid #667eea;
-    padding: 10px 8px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.button-group button:hover {
-    background-color: #667eea;
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Kotak Tampilan Informasi */
-.info-box {
-    background-color: #f8fafc;
-    border-left: 4px solid #667eea;
+.bio-section {
+    background: #21262d;
     padding: 15px;
     border-radius: 8px;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 20px;
+    text-align: left;
+    font-size: 0.9rem;
+    border-left: 4px solid #e62429;
 }
 
-#infoText {
-    font-size: 14px;
-    color: #2d3748;
-    font-weight: 500;
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 15px 0 25px;
 }
 
-/* Tombol Sapa Tambahan */
-.btn-sapa {
-    background: linear-gradient(135deg, #28a745, #20c997);
+.skill-tag {
+    background: #0055ff;
     color: white;
-    border: none;
-    padding: 10px 20px;
+    padding: 6px 12px;
     border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Tombol Aksi */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 13px;
-    transition: opacity 0.2s;
 }
 
-.btn-sapa:hover {
-    opacity: 0.9;
+.btn-warning {
+    background-color: #ffcc00;
+    color: #000;
 }
 
-#pesanSapa {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #28a745;
-    font-weight: bold;
+.btn-primary {
+    background-color: #e62429;
+    color: #fff;
+}
+
+.btn:hover {
+    transform: scale(1.03);
+}
+
+/* Efek Spider-Sense (Animasi Bergetar + Glow) */
+.spider-sense-active {
+    animation: pulse-glow 0.4s infinite alternate;
+    border-color: #ffcc00 !important;
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 15px #ffcc00;
+        transform: translateY(-2px);
+    }
+    100% {
+        box-shadow: 0 0 35px #ffcc00;
+        transform: translateY(2px);
+    }
 }
