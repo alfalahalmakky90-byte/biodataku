@@ -3,286 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Interaktif Spider-Man - Muiz Adkha Maulana</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        spidey: {
-                            red: '#ef4444',
-                            darkRed: '#dc2626',
-                            blue: '#1e1b4b',
-                            darkBg: '#0f172a',
-                            cyan: '#06b6d4',
-                            brightCyan: '#22d3ee'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Biodata Interaktif - Muiz Adkha Maulana (Spider-Man Edition)</title>
     <style>
-        /* Pattern Spider Web Background Overlay */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #0f172a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #1a0003 0%, #050008 100%);
+            /* Pola Latar Jaring Laba-Laba (Spider-Web Background) */
             background-image: 
-                radial-gradient(circle at 50% 20%, rgba(220, 38, 38, 0.25) 0%, transparent 60%),
-                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-                linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%);
+                radial-gradient(circle at center, rgba(230, 0, 38, 0.15) 0%, transparent 70%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            padding: 20px;
+            color: #fff;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.06"><path d="M50 0 L50 100 M0 50 L100 50 M14.6 14.6 L85.4 85.4 M14.6 85.4 L85.4 14.6 M50 25 Q32 32 25 50 Q32 68 50 75 Q68 68 75 50 Q68 32 50 25 Z M50 10 Q21 21 10 50 Q21 79 50 90 Q79 79 90 50 Q79 21 50 10 Z" stroke="%23ef4444" stroke-width="1.2" fill="none"/></svg>');
-            pointer-events: none;
-            z-index: 0;
+        .card-container {
+            background: linear-gradient(160deg, #181925 0%, #0d0e15 100%);
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: 0 0 35px rgba(230, 0, 38, 0.4), inset 0 0 15px rgba(0, 210, 255, 0.15);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            border: 2px solid #e60026;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Glassmorphism Card Style */
-        .spidey-card {
-            background: rgba(15, 23, 42, 0.85);
-            border: 2px solid #ef4444;
-            box-shadow: 
-                0 0 25px rgba(239, 68, 68, 0.35),
-                0 0 12px rgba(6, 182, 212, 0.2),
-                inset 0 0 15px rgba(239, 68, 68, 0.1);
-            backdrop-filter: blur(12px);
+        /* Hiasan Jaring & Aksesori Spider-Man */
+        .card-container::before {
+            content: "🕷️";
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 24px;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 5px #e60026);
         }
 
-        .slide-fade {
-            animation: fadeIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .spider-badge {
+            display: inline-block;
+            background: #e60026;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(230, 0, 38, 0.8);
+            margin-bottom: 12px;
+        }
+
+        .profile-pic img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00d2ff;
+            outline: 3px solid #e60026;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(230, 0, 38, 0.8);
+            margin-bottom: 4px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline {
+            color: #00d2ff;
+            font-size: 12px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(0, 210, 255, 0.4);
+        }
+
+        /* Menu Utama */
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .button-group button {
+            background: linear-gradient(135deg, rgba(230, 0, 38, 0.2), rgba(0, 31, 63, 0.4));
+            color: #ffffff;
+            border: 1.5px solid #e60026;
+            padding: 12px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25 ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-group button:hover {
+            background: #e60026;
+            border-color: #00d2ff;
+            box-shadow: 0 0 15px rgba(230, 0, 38, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Tombol Khusus (Instagram & Alasan TKJ) */
+        .btn-full {
+            width: 100%;
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(253, 29, 29, 0.3);
+        }
+
+        .btn-full:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(253, 29, 29, 0.7);
+        }
+
+        .btn-tkj {
+            background: linear-gradient(135deg, #0052d4, #4364f7, #6fb1fc);
+            border: 1px solid #00d2ff;
+        }
+
+        .btn-sapa {
+            background: linear-gradient(135deg, #e60026, #99001a);
+            color: white;
+            border: 1px solid #00d2ff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            width: 100%;
+            transition: all 0.2s;
+            box-shadow: 0 0 10px rgba(230, 0, 38, 0.5);
+        }
+
+        .btn-sapa:hover {
+            background: #e60026;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
+        }
+
+        #pesanSapa {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #00d2ff;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Sistem Slide / Tab */
+        .slide {
+            display: none;
+            animation: fadeIn 0.35s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .detail-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid #00d2ff;
+            padding: 18px;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            text-align: left;
+            box-shadow: inset 0 0 10px rgba(0, 210, 255, 0.1);
+        }
+
+        .detail-title {
+            font-size: 11px;
+            color: #e60026;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .detail-content {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(0, 210, 255, 0.3);
+            line-height: 1.4;
+        }
+
+        .detail-comment {
+            font-size: 12px;
+            color: #d1d5db;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #e60026;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Navigasi Slide */
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-back {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            border: 1px solid #4a5568;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            flex: 1;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: #4a5568;
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #e60026, #b3001b);
+            color: white;
+            border: 1px solid #00d2ff;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            flex: 1;
+            transition: all 0.2s;
+            box-shadow: 0 0 10px rgba(230, 0, 38, 0.5);
+        }
+
+        .btn-next:hover {
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
+            transform: translateY(-1px);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-4 relative text-slate-100"
+<body>
 
-    <!-- MAIN CONTAINER CARD -->
-    <div class="spidey-card w-full max-w-md rounded-3xl p-6 sm:p-8 text-center relative z-10 transition-all duration-300">
+    <div class="card-container">
         
-        <!-- SPIDER BADGE -->
-        <div class="w-16 h-16 bg-red-600 rounded-full mx-auto -mt-12 mb-4 flex items-center justify-center border-4 border-cyan-400 shadow-[0_0_20px_rgba(239,68,68,0.8)]">
-            <svg class="w-9 h-9 fill-white" viewBox="0 0 24 24">
-                <path d="M12,2L14.5,7.5L20,5L17.5,10.5 L22,13L16.5,14.5L18,21L12,17L6,21L7.5,14.5L2,13L6.5,10.5L4,5L9.5,7.5L12,2Z"/>
-            </svg>
-        </div>
-
-        <!-- PROFILE HERO HEADER -->
-        <div class="relative inline-block mb-3">
-            <img src="https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=300&q=80" 
-                 alt="Profile Muiz" 
-                 class="w-28 h-28 rounded-full object-cover border-4 border-red-500 shadow-[0_0_18px_rgba(239,68,68,0.6)] bg-slate-800 mx-auto">
-            <span class="absolute bottom-1 right-1 bg-slate-900 border border-cyan-400 rounded-full p-1 text-xs shadow-md">🕷️</span>
-        </div>
-
-        <h1 class="text-2xl font-extrabold tracking-wider text-white drop-shadow-[0_0_10px_rgba(239,68,68,0.6)] mb-1">
-            MUIZ ADKHA MAULANA
-        </h1>
-        <p class="text-xs font-semibold text-cyan-400 tracking-wide uppercase mb-6">
-            TKJ Student | Web Developer Enthusiast | Spider-Man Style
-        </p>
-
-        <!-- INSTAGRAM INTEGRATED SECTION -->
-        <div class="bg-gradient-to-r from-purple-900/40 via-pink-900/40 to-red-900/40 border border-pink-500/40 rounded-2xl p-3.5 mb-6 text-left flex items-center justify-between gap-3 shadow-lg backdrop-blur-md">
-            <div class="flex items-center gap-3 overflow-hidden">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-md">
-                    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </div>
-                <div class="overflow-hidden">
-                    <p class="font-bold text-sm text-white truncate">@muizadkha ⚡</p>
-                    <p class="text-[11px] text-slate-300 truncate">Instagram Bio • Follow & Connect!</p>
-                </div>
-            </div>
-            <a href="https://instagram.com/muisadkhaa._" target="_blank" rel="noopener noreferrer" 
-               class="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white font-bold text-xs px-3.5 py-2 rounded-full transition-all duration-200 transform hover:scale-105 shadow-[0_0_10px_rgba(239,68,68,0.5)] whitespace-nowrap">
-                Follow 📸
-            </a>
-        </div>
-
-        <!-- MENU UTAMA (MAIN GRID MENU) -->
-        <div id="mainMenu" class="space-y-4">
-            <div class="grid grid-cols-2 gap-3">
-                <button onclick="mulaiSlide(0)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
-                    👤 Nama
-                </button>
-                <button onclick="mulaiSlide(1)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
-                    📅 TTL
-                </button>
-                <button onclick="mulaiSlide(2)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
-                    🏠 Alamat
-                </button>
-                <button onclick="mulaiSlide(3)" class="bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
-                    🎓 Jurusan
-                </button>
-                <button onclick="mulaiSlide(4)" class="col-span-2 bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
-                    💡 Alasan Memilih TKJ
-                </button>
-                <button onclick="mulaiSlide(5)" class="col-span-2 bg-slate-900/80 hover:bg-red-600 text-slate-100 font-bold py-3 px-3 rounded-xl border border-red-500/60 hover:border-cyan-400 transition duration-200 shadow-md hover:shadow-[0_0_12px_rgba(239,68,68,0.8)] text-xs sm:text-sm flex items-center justify-center gap-1.5">
-                    🎬 Penutup
-                </button>
+        <!-- SLIDE 0: MENU UTAMA -->
+        <div id="slide-0" class="slide active">
+            <span class="spider-badge">Spider-Verse Edition</span>
+            
+            <div class="profile-pic">
+                <img src="https://via.placeholder.com/150" alt="Foto Profil">
             </div>
 
-            <button onclick="sapa()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 hover:text-white font-extrabold py-3 px-4 rounded-full transition duration-200 shadow-[0_0_15px_rgba(6,182,212,0.4)] text-xs uppercase tracking-wider">
-                Kirim Salam 👋
-            </button>
-            <p id="pesanSapa" class="text-cyan-400 font-bold text-xs h-4 transition-all duration-300"></p>
-        </div>
+            <h1>MUIZ ADKHA MAULANA</h1>
+            <p class="tagline">🕸️ Web Developer & Tech Enthusiast 🕸️</p>
 
-        <!-- DETAIL SLIDE VIEW -->
-        <div id="slideSection" class="hidden slide-fade">
-            <div class="bg-slate-950/80 border border-cyan-400/80 rounded-2xl p-5 mb-5 text-left relative shadow-[0_0_15px_rgba(6,182,212,0.25)]">
-                <div class="flex items-center justify-between mb-3">
-                    <span id="slideBadgeText" class="bg-red-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_8px_rgba(239,68,68,0.8)]">
-                        SLIDE 1 DARI 6
-                    </span>
-                    <span class="text-cyan-400 text-xs font-semibold">Spider-Sense Info</span>
-                </div>
-
-                <h2 id="judulKategori" class="text-lg font-extrabold text-white mb-3 flex items-center gap-2">
-                    👤 NAMA
-                </h2>
-
-                <div id="isiJawaban" class="text-sm font-bold text-slate-100 bg-slate-900/90 p-3.5 rounded-xl border border-slate-700/60 mb-4 leading-relaxed">
-                    MUIZ ADKHA MAULANA
-                </div>
-
-                <!-- COMMENTARY BOX -->
-                <div class="bg-red-950/30 border-l-4 border-red-500 p-3 rounded-r-xl">
-                    <p class="text-cyan-400 font-bold text-xs mb-1">💬 Catatan & Komentar Pembaca:</p>
-                    <p id="isiKomentar" class="text-xs text-slate-300 italic leading-relaxed">
-                        Komentar pembaca...
-                    </p>
-                </div>
+            <div class="button-group">
+                <button onclick="goToSlide(1)">👤 Nama</button>
+                <button onclick="goToSlide(2)">📅 TTL</button>
+                <button onclick="goToSlide(3)">🏠 Alamat</button>
+                <button onclick="goToSlide(4)">🎓 Jurusan</button>
             </div>
 
-            <!-- ACTION BUTTONS -->
-            <div class="space-y-2.5">
-                <button id="btnNextText" onclick="slideBerikutnya()" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold py-3 px-4 rounded-full transition duration-200 shadow-[0_0_15px_rgba(239,68,68,0.6)] text-xs uppercase tracking-wider">
-                    ➡ Slide Berikutnya
-                </button>
-                <button onclick="kembaliKeMenu()" class="w-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white font-bold py-2.5 px-4 rounded-full border border-slate-600 transition duration-200 text-xs">
-                    ⬅ Kembali ke Menu Utama
-                </button>
+            <a href="https://instagram.com/muisadkhaa._" target="_blank" class="btn-full">📸 Instagram: @muisadkhaa._</a>
+            <button class="btn-full btn-tkj" onclick="goToSlide(5)">💻 Alasan Memilih TKJ</button>
+            
+            <button class="btn-sapa" onclick="sapa()">Kirim Salam 👋</button>
+            <p id="pesanSapa"></p>
+        </div>
+
+        <!-- SLIDE 1: NAMA -->
+        <div id="slide-1" class="slide">
+            <span class="spider-badge">Slide 01 / 06</span>
+            <div class="profile-pic"><img src="https://via.placeholder.com/150" alt="Profil"></div>
+            <h1>👤 NAMA LENGKAP</h1>
+            <p class="tagline">Identitas Heroic</p>
+            <div class="detail-card">
+                <div class="detail-title">Nama Lengkap:</div>
+                <div class="detail-content">MUIZ ADKHA MAULANA</div>
+                <div class="detail-title">💬 Komentar / Catatan:</div>
+                <div class="detail-comment">"Nama panggilan saya Muiz. Siap merajut masa depan lewat baris kode seperti Spider-Man merajut jaringnya!"</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-back" onclick="goToSlide(0)">⬅ Menu Utama</button>
+                <button class="btn-next" onclick="goToSlide(2)">Lanjut ➡</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: TTL -->
+        <div id="slide-2" class="slide">
+            <span class="spider-badge">Slide 02 / 06</span>
+            <div class="profile-pic"><img src="https://via.placeholder.com/150" alt="Profil"></div>
+            <h1>📅 TEMPAT, TGL LAHIR</h1>
+            <p class="tagline">Origin Story</p>
+            <div class="detail-card">
+                <div class="detail-title">TTL:</div>
+                <div class="detail-content">MALANG, 21 NOVEMBER 2009</div>
+                <div class="detail-title">💬 Komentar / Catatan:</div>
+                <div class="detail-comment">"Lahir di Kota Malang. Arek Malang asli yang siap beraksi pantang menyerah!"</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-back" onclick="goToSlide(1)">⬅ Sebelumnya</button>
+                <button class="btn-next" onclick="goToSlide(3)">Lanjut ➡</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: ALAMAT -->
+        <div id="slide-3" class="slide">
+            <span class="spider-badge">Slide 03 / 06</span>
+            <div class="profile-pic"><img src="https://via.placeholder.com/150" alt="Profil"></div>
+            <h1>🏠 ALAMAT DOMISILI</h1>
+            <p class="tagline">Basecamp / Markas</p>
+            <div class="detail-card">
+                <div class="detail-title">Alamat:</div>
+                <div class="detail-content">LEBAKHARJO, AMPELGADING</div>
+                <div class="detail-title">💬 Komentar / Catatan:</div>
+                <div class="detail-comment">"Tinggal di Lebakharjo, Ampelgading. Tempat yang tenang untuk fokus belajar dan bereksperimen dengan teknologi."</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-back" onclick="goToSlide(2)">⬅ Sebelumnya</button>
+                <button class="btn-next" onclick="goToSlide(4)">Lanjut ➡</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: JURUSAN -->
+        <div id="slide-4" class="slide">
+            <span class="spider-badge">Slide 04 / 06</span>
+            <div class="profile-pic"><img src="https://via.placeholder.com/150" alt="Profil"></div>
+            <h1>🎓 JURUSAN SEKOLAH</h1>
+            <p class="tagline">Spesialisasi Keahlian</p>
+            <div class="detail-card">
+                <div class="detail-title">Jurusan:</div>
+                <div class="detail-content">TKJ (Teknik Komputer dan Jaringan)</div>
+                <div class="detail-title">💬 Komentar / Catatan:</div>
+                <div class="detail-comment">"Anak TKJ yang menguasai jaringan sekaligus terampil membangun website interaktif!"</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-back" onclick="goToSlide(3)">⬅ Sebelumnya</button>
+                <button class="btn-next" onclick="goToSlide(5)">Lanjut ➡</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: ALASAN TKJ -->
+        <div id="slide-5" class="slide">
+            <span class="spider-badge">Slide 05 / 06</span>
+            <div class="profile-pic"><img src="https://via.placeholder.com/150" alt="Profil"></div>
+            <h1>💻 ALASAN MEMILIH TKJ</h1>
+            <p class="tagline">Visi Komputasional</p>
+            <div class="detail-card">
+                <div class="detail-title">Pernyataan Utama:</div>
+                <div class="detail-content" style="font-size: 13px; font-weight: 600;">"ALASAN SAYA MEMILIH JURUSAN TKJ YAITU UNTUK MEMPELAJARI CARA KERJA SISTEM KOMPUTASI DAN BISA BERPIKIR SECARA KOMPUTASIONAL AGAR SAYA BISA MENGEMBANGKAN BANYAK WEBSITE MAUPUN APLIKASI YANG MUNGKIN BISA BERGUNA UNTUK SAYA ATAUPUN MASYARAKAT NANTI"</div>
+                <div class="detail-title">💬 Komentar / Catatan:</div>
+                <div class="detail-comment">"Seperti prinsip Peter Parker: 'With great power comes great responsibility'. Ilmu komputasi yang saya pelajari harus bermanfaat untuk banyak orang!"</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-back" onclick="goToSlide(4)">⬅ Sebelumnya</button>
+                <button class="btn-next" onclick="goToSlide(6)">Penutup ➡</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: PENUTUP -->
+        <div id="slide-6" class="slide">
+            <span class="spider-badge">Slide Final</span>
+            <div class="profile-pic"><img src="https://via.placeholder.com/150" alt="Profil"></div>
+            <h1>PENUTUP</h1>
+            <p class="tagline">Akhir Kata</p>
+            <div class="detail-card" style="text-align: center;">
+                <div class="detail-title">Pesan Penutup:</div>
+                <div class="detail-content" style="font-size: 16px; border: none; color: #00d2ff;">SEKIAN DARI SAYA<br>ASSALAMUALAIKUM WR. WB.</div>
+                <div class="detail-title">💬 Komentar / Catatan:</div>
+                <div class="detail-comment">"Terima kasih atas perhatian teman-teman semua di SMA Plus Alfalah Almakky. Sampai jumpa di puncak sukses!"</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-back" onclick="goToSlide(5)">⬅ Sebelumnya</button>
+                <button class="btn-next" onclick="goToSlide(0)">🏠 Menu Utama</button>
             </div>
         </div>
 
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT PERPINDAHAN SLIDE -->
     <script>
-        // DATA SLIDE SESUAI PERMINTAAN
-        const daftarSlide = [
-            {
-                kategori: "Nama",
-                jawaban: "MUIZ ADKHA MAULANA",
-                komentar: "Nama panggilan saya Muiz. Senang bisa berkenalan dengan kalian semua di SMA Plus Alfalah Almakky!",
-                ikon: "👤"
-            },
-            {
-                kategori: "TTL",
-                jawaban: "MALANG, 21 NOVEMBER 2009",
-                komentar: "Lahir dan tumbuh di Malang. Salam hangat dari Arek Malang untuk teman-teman semua!",
-                ikon: "📅"
-            },
-            {
-                kategori: "Alamat",
-                jawaban: "LEBAKHARJO, AMPELGADING",
-                komentar: "Tinggal di kawasan Lebakharjo, Ampelgading yang udaranya sejuk, asri, dan ramah lingkungan.",
-                ikon: "🏠"
-            },
-            {
-                kategori: "Jurusan",
-                jawaban: "TKJ (Teknik Komputer dan Jaringan)",
-                komentar: "Di TKJ tidak hanya belajar merakit jaringan & hardware, tapi juga mengasah skill coding web!",
-                ikon: "🎓"
-            },
-            {
-                kategori: "Alasan Memilih TKJ",
-                jawaban: "ALASAN SAYA MEMILIH JURUSAN TKJ YAITU UNTUK MEMPELAJARI CARA KERJA SISTEM KOMPUTASI DAN BISA BERPIKIR SECARA KOMPUTASIONAL AGAR SAYA BISA MENGEMBANGKAN BANYAK WEBSITE MAUPUN APLIKASI YANG MUNGKIN BISA BERGUNA UNTUK SAYA ATAUPUN MASYARAKAT NANTI",
-                komentar: "Visi yang sangat visioner! Dengan kemampuan computational thinking, Muiz siap membangun teknologi berguna bagi masyarakat. 'With great power comes great responsibility!'",
-                ikon: "💡"
-            },
-            {
-                kategori: "PENUTUP",
-                jawaban: "SEKIAN DARI SAYA ASSALAMUALAIKUM WR. WB.",
-                komentar: "Terima kasih banyak atas perhatian teman-teman dan Bapak/Ibu guru SMA Plus Alfalah Almakky. Semoga menginspirasi!",
-                ikon: "🎬"
+        function goToSlide(slideIndex) {
+            // Sembunyikan semua slide
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // Tampilkan slide tujuan berdasarkan ID
+            const targetSlide = document.getElementById('slide-' + slideIndex);
+            if (targetSlide) {
+                targetSlide.classList.add('active');
             }
-        ];
-
-        let indexSlideAktif = 0;
-
-        function mulaiSlide(index) {
-            indexSlideAktif = index;
-            tampilkanSlide();
-            document.getElementById('mainMenu').classList.add('hidden');
-            document.getElementById('slideSection').classList.remove('hidden');
-        }
-
-        function tampilkanSlide() {
-            const slide = daftarSlide[indexSlideAktif];
             
-            document.getElementById('slideBadgeText').textContent = `SLIDE ${indexSlideAktif + 1} DARI ${daftarSlide.length}`;
-            document.getElementById('judulKategori').innerHTML = `${slide.ikon} ${slide.kategori.toUpperCase()}`;
-            document.getElementById('isiJawaban').textContent = slide.jawaban;
-            document.getElementById('isiKomentar').textContent = slide.komentar;
-
-            const btnNext = document.getElementById('btnNextText');
-            if (indexSlideAktif === daftarSlide.length - 1) {
-                btnNext.textContent = "🔄 Selesai & Ulangi dari Awal";
-            } else {
-                btnNext.textContent = "➡ Slide Berikutnya";
-            }
-
-            // Trigger smooth animation
-            const slideSec = document.getElementById('slideSection');
-            slideSec.classList.remove('slide-fade');
-            void slideSec.offsetWidth; // Trigger reflow
-            slideSec.classList.add('slide-fade');
-        }
-
-        function slideBerikutnya() {
-            if (indexSlideAktif < daftarSlide.length - 1) {
-                indexSlideAktif++;
-                tampilkanSlide();
-            } else {
-                indexSlideAktif = 0;
-                tampilkanSlide();
-            }
-        }
-
-        function kembaliKeMenu() {
-            document.getElementById('slideSection').classList.add('hidden');
-            document.getElementById('mainMenu').classList.remove('hidden');
-            document.getElementById('pesanSapa').textContent = "";
+            // Scroll halus ke atas agar pas di layar HP/Laptop
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function sapa() {
-            const pesan = document.getElementById('pesanSapa');
-            pesan.textContent = "Halo! Terima kasih sudah menyapa! Salam Spider-Tech dari Muiz! 🕷️✨";
+            document.getElementById('pesanSapa').textContent = "Terima kasih sudah menyapa! Salam jaring laba-laba dari Muiz! 🕷️✨";
         }
-     </script>
-    
-    <!-- PEMUTAR SUARA YOUTUBE OTOMATIS TANPA TOMBOL -->
-<div style="display:none;">
-      <iframe src="https://www.youtube.com./embed/ApXoWvfEYVU?autoplay=1&loop=1&playlist=ApXoWvfEYVU&enablejsapi=1" 
-            allow="autoplay" 
-            frameborder="0">
-      </iframe>
-  </div>
-    
+    </script>
 </body>
 </html>
