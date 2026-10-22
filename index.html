@@ -66,12 +66,15 @@
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-4 relative text-slate-100">
+<body class="flex items-center justify-center p-4 relative text-slate-100"
 
-    <!-- ELEMEN AUDIO TERSEMBUNYI (AUTOPLAY SUNFLOWER) -->
-<audio id="bgMusic" loop autoplay>
-    <source src="Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) [ApXoWvfEYVU]" type="audio/mp3">
-</audio>
+<!-- PEMUTAR SUARA YOUTUBE OTOMATIS TANPA TOMBOL -->
+<div style="display:none;">
+    <iframe src="https://www.youtube.com/Post Malone - Sunflower (Lyrics) ft. Swae Lee" 
+            allow="autoplay" 
+            frameborder="0">
+    </iframe>
+</div>
     
     <!-- MAIN CONTAINER CARD -->
     <div class="spidey-card w-full max-w-md rounded-3xl p-6 sm:p-8 text-center relative z-10 transition-all duration-300">
@@ -279,6 +282,6 @@
             const pesan = document.getElementById('pesanSapa');
             pesan.textContent = "Halo! Terima kasih sudah menyapa! Salam Spider-Tech dari Muiz! 🕷️✨";
         }
-    </script>
+     </script>
 </body>
 </html>
