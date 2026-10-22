@@ -3,102 +3,638 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata - Sunflower</title>
+    <title>Spider-Man Portfolio | Interactive Web</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            height: 100vh;
+        :root {
+            --spidey-red: #e62429;
+            --spidey-blue: #0b3c5d;
+            --spidey-dark: #0a0a0f;
+            --spidey-neon: #00f0ff;
+            --spidey-yellow: #ffcc00;
+            --text-light: #f0f0f5;
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--spidey-dark);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--spidey-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--spidey-red);
+            border-radius: 4px;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            color: #333;
+            padding: 20px 50px;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid rgba(230, 36, 41, 0.3);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--spidey-red);
+            text-shadow: 0 0 10px rgba(230, 36, 41, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--spidey-neon);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--spidey-red);
+            text-shadow: 0 0 8px var(--spidey-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            position: relative;
+            background: radial-gradient(circle at center, #151a2d 0%, var(--spidey-dark) 80%);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--spidey-neon);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: var(--spidey-red);
+            text-shadow: 0 0 15px rgba(230, 36, 41, 0.6);
+        }
+
+        .hero-content p {
+            color: #b0b0c0;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--spidey-red);
+            color: white;
+            box-shadow: 0 0 15px rgba(230, 36, 41, 0.4);
+            border: 2px solid var(--spidey-red);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--spidey-red);
+            box-shadow: 0 0 25px rgba(230, 36, 41, 0.8);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--spidey-neon);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--spidey-neon);
+            color: var(--spidey-dark);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+        }
+
+        /* Hero Image / Mask Graphic Simulation */
+        .hero-graphic {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .spidey-badge {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--spidey-red), #900c11);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(230, 36, 41, 0.5);
+            animation: floatBadge 4s ease-in-out infinite;
+            border: 4px solid var(--spidey-neon);
+        }
+
+        .spidey-badge i {
+            font-size: 8rem;
+            color: var(--text-light);
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 span {
+            color: var(--spidey-red);
+        }
+
+        .section-title p {
+            color: var(--spidey-neon);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-card {
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .about-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--spidey-neon);
+        }
+
+        .about-card p {
+            color: #b0b0c0;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: rgba(11, 60, 93, 0.3);
+            border: 1px solid var(--spidey-red);
+            padding: 25px;
+            border-radius: 10px;
             text-align: center;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.85);
+        .stat-box h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--spidey-red);
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Projects / Missions Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(15, 15, 25, 0.8);
+            border: 1px solid rgba(230, 36, 41, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--spidey-neon);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .project-header {
+            background: var(--spidey-blue);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-header i {
+            font-size: 1.8rem;
+            color: var(--spidey-red);
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-body h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .project-body p {
+            color: #a0a0b0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tags span {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--spidey-neon);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(15, 15, 25, 0.9);
+            border: 1px solid rgba(230, 36, 41, 0.4);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--spidey-neon);
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--spidey-red);
+            box-shadow: 0 0 10px rgba(230, 36, 41, 0.4);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 130px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            background: #050508;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #707080;
+            font-size: 0.9rem;
         }
 
-        .music-btn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            font-size: 14px;
-            border: none;
-            border-radius: 20px;
-            background-color: #ffb703;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
+        footer span {
+            color: var(--spidey-red);
         }
 
-        .music-btn:hover {
-            transform: scale(1.05);
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding-top: 120px;
+                height: auto;
+                padding-bottom: 80px;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none; /* Sederhana untuk mobile */
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>🌻 Selamat Datang di Biodata Saya</h1>
-        <p>🎵 Playing: <b>Post Malone, Swae Lee - Sunflower</b></p>
-        
-        <!-- Tombol Kontrol Suara -->
-        <button class="music-btn" id="musicBtn" onclick="togglePlay()">⏸️ Jeda Musik</button>
-    </div>
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-spider"></i> SPIDEY_DEV
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#missions">Missions</a></li>
+                <li><a href="#contact">Signal S.O.S</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Elemen Audio menggunakan Link Streaming MP3 Sunflower -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://ia801503.us.archive.org/15/items/post-malone-swae-lee-sunflower-spider-man-into-the-spider-verse/Post%20Malone%2C%20Swae%20Lee%20-%20Sunflower%20%28Spider-Man_%20Into%20the%20Spider-Verse%29.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung elemen audio.
-    </audio>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h3>FRIENDLY NEIGHBORHOOD WEB DEVELOPER</h3>
+            <h1>Building The Web with <span>Great Power</span> & Great Code.</h1>
+            <p>Halo, saya seorang pengembang web kreatif yang siap beraksi menjelajahi linimasa digital, merajut barisan kode tangguh untuk solusi web Anda.</p>
+            <div class="btn-group">
+                <a href="#missions" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Lihat Misi</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-satellite-dish"></i> Hubungi Saya</a>
+            </div>
+        </div>
+        <div class="hero-graphic">
+            <div class="spidey-badge">
+                <i class="fa-solid fa-spider"></i>
+            </div>
+        </div>
+    </section>
 
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>Tentang <span>Karakter</span></h2>
+            <p>// IDENTITY DOSSIER</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Asal-Usul & Keahlian</h3>
+                <p>Bagaimana laba-laba radioaktif mengubah segalanya? Dalam dunia pemrograman, gigitan itu adalah rasa penasaran mendalam terhadap teknologi web modern, UI/UX interaktif, serta performa aplikasi yang secepat jaring meluncur.</p>
+                <p>Berpengalaman merancang antarmuka yang bersih, responsif, dinamis, serta mengutamakan kenyamanan pengguna (User Experience).</p>
+            </div>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <h4>25+</h4>
+                    <p>Misi Selesai</p>
+                </div>
+                <div class="stat-box">
+                    <h4>3+</h4>
+                    <p>Tahun Pengalaman</p>
+                </div>
+                <div class="stat-box">
+                    <h4>100%</h4>
+                    <p>Dedikasi</p>
+                </div>
+                <div class="stat-box">
+                    <h4>24/7</h4>
+                    <p>Siap Siaga</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects / Missions Section -->
+    <section id="missions" class="missions">
+        <div class="section-title">
+            <h2>Misi <span>Unggulan</span></h2>
+            <p>// ACTIVE PORTFOLIO PROJECTS</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>MISSION 01</span>
+                </div>
+                <div class="project-body">
+                    <h3>Spider-Dashboard</h3>
+                    <p>Aplikasi pemantauan data real-time dengan visualisasi grafik interaktif dan gaya futuristik.</p>
+                    <div class="tech-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>Chart.js</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-solid fa-code"></i> Detail Misi</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>MISSION 02</span>
+                </div>
+                <div class="project-body">
+                    <h3>Web Game Arena</h3>
+                    <p>Mini-game interaktif berbasis browser yang ringan, responsif, dan adiktif untuk pengguna.</p>
+                    <div class="tech-tags">
+                        <span>JavaScript</span>
+                        <span>Canvas API</span>
+                        <span>Tailwind</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-solid fa-code"></i> Detail Misi</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>MISSION 03</span>
+                </div>
+                <div class="project-body">
+                    <h3>E-Commerce Web Store</h3>
+                    <p>Platform toko online modern lengkap dengan sistem keranjang belanja dan transaksi mulus.</p>
+                    <div class="tech-tags">
+                        <span>React.js</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;"><i class="fa-solid fa-code"></i> Detail Misi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>Kirim S.O.S <span>Signal</span></h2>
+            <p>// GET IN TOUCH</p>
+        </div>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nama / Alias</label>
+                    <input type="text" id="name" placeholder="Masukkan nama Anda..." required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Frekuensi Email</label>
+                    <input type="email" id="email" placeholder="nama@domain.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan / Detail Misi</label>
+                    <textarea id="message" placeholder="Tuliskan detail proyek atau pesan Anda..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    <i class="fa-solid fa-paper-plane"></i> Kirim Sinyal
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>SpideyDev</span>. Dengan kekuatan besar, datang pula tanggung jawab kode yang besar.</p>
+    </footer>
+
+    <!-- JavaScript Interaktif -->
     <script>
-        const audio = document.getElementById('bgMusic');
-        const btn = document.getElementById('musicBtn');
+        // Animasi Sederhana atau Validasi Form saat tombol submit diklik
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Terima kasih, ${name}! Sinyal S.O.S Anda telah terkirim ke Spider-Cave. Kami akan segera merespons.`);
+            contactForm.reset();
+        });
 
-        // Fungsi Memutar / Menghentikan Musik
-        function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-                btn.innerHTML = "⏸️ Jeda Musik";
+        // Efek Interaktif Sederhana pada Scroll (Opsional)
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10, 10, 15, 0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
             } else {
-                audio.pause();
-                btn.innerHTML = "🎵 Putar Musik";
+                header.style.background = 'rgba(10, 10, 15, 0.85)';
+                header.style.boxShadow = 'none';
             }
-        }
-
-        // Trik Autoplay: Mencoba memutar audio, jika diblokir browser, tunggu klik pertama pengunjung
-        function startAudio() {
-            audio.play().then(() => {
-                btn.innerHTML = "⏸️ Jeda Musik";
-            }).catch(() => {
-                btn.innerHTML = "🎵 Klik di mana saja untuk memutar Sunflower";
-                
-                // Menunggu interaksi klik/sentuhan pertama pengguna di layar
-                const playOnFirstInteraction = () => {
-                    audio.play().then(() => {
-                        btn.innerHTML = "⏸️ Jeda Musik";
-                    });
-                    document.removeEventListener('click', playOnFirstInteraction);
-                    document.removeEventListener('touchstart', playOnFirstInteraction);
-                };
-
-                document.addEventListener('click', playOnFirstInteraction);
-                document.addEventListener('touchstart', playOnFirstInteraction);
-            });
-        }
-
-        // Jalankan saat halaman dibuka
-        window.addEventListener('DOMContentLoaded', startAudio);
+        });
     </script>
-
 </body>
 </html>
