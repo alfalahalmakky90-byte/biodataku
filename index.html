@@ -3,368 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Interaktif - Muiz Adkha Maulana (Spider-Man Edition)</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0b0f19 0%, #1a0507 100%);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-
-        .card-container {
-            background: rgba(18, 22, 33, 0.95);
-            border: 2px solid #e62429;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(230, 36, 41, 0.4), inset 0 0 15px rgba(0, 210, 255, 0.1);
-            text-align: center;
-            max-width: 440px;
-            width: 100%;
-            position: relative;
-        }
-
-        .profile-pic img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #00d2ff;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 22px;
-            color: #ff333d;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tagline {
-            color: #a0aec0;
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        .button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .button-group button, .btn-full {
-            background-color: #1a202c;
-            color: #fff;
-            border: 2px solid #00d2ff;
-            padding: 12px 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .button-group button:hover, .btn-full:hover {
-            background-color: #00d2ff;
-            color: #0b0f19;
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
-        }
-
-        .btn-full {
-            width: 100%;
-            margin-bottom: 10px;
-            border-color: #e62429;
-        }
-        .btn-full:hover {
-            background-color: #e62429;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(230, 36, 41, 0.6);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .slide-card {
-            background-color: #161b26;
-            border: 2px solid #00d2ff;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .slide-title {
-            font-size: 12px;
-            color: #00d2ff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .slide-content {
-            font-size: 15px;
-            color: #fff;
-            font-weight: bold;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed rgba(255,255,255,0.2);
-            line-height: 1.4;
-        }
-
-        .slide-comment {
-            font-size: 12px;
-            color: #cbd5e0;
-            background-color: #1f2937;
-            padding: 10px;
-            border-radius: 8px;
-            font-style: italic;
-            border-left: 3px solid #e62429;
-            line-height: 1.4;
-        }
-
-        /* Navigasi Slide */
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-back {
-            background-color: #e53e3e;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-            flex: 1;
-            transition: opacity 0.2s;
-        }
-        .btn-next {
-            background-color: #00d2ff;
-            color: #0b0f19;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-            flex: 1;
-            transition: opacity 0.2s;
-        }
-        .btn-back:hover, .btn-next:hover { opacity: 0.85; }
-
-        /* Instagram card style */
-        .ig-box {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #fd1d1d, #f56040);
-            padding: 12px;
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 14px;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(193, 53, 132, 0.4);
-            transition: transform 0.2s;
-        }
-        .ig-box:hover {
-            transform: scale(1.02);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .screen { animation: fadeIn 0.3s ease-in-out; }
-    </style>
+    <title>Spider-Bio | Classified Dossier</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="card-container">
-        
-        <!-- SCREEN 0: MENU UTAMA -->
-        <div id="screen-menu" class="screen">
-            <div class="profile-pic">
-                <img src="https://via.placeholder.com/150" alt="Foto Profil">
+    <div class="card-container" id="hero-card">
+        <!-- Badge Status -->
+        <div class="badge">CLASSIFIED DOSSIER</div>
+
+        <!-- Profil -->
+        <div class="profile-header">
+            <div class="avatar-box">
+                <img src="https://via.placeholder.com/120" alt="Foto Profil" id="profile-img">
             </div>
-
-            <h1>MUIZ ADKHA MAULANA</h1>
-            <p class="tagline">🕸️ Spider-Man Web Developer Portfolio 🕸️</p>
-
-            <div class="button-group">
-                <button onclick="goToSlide('nama')">👤 Nama</button>
-                <button onclick="goToSlide('ttl')">📅 TTL</button>
-                <button onclick="goToSlide('alamat')">🏠 Alamat</button>
-                <button onclick="goToSlide('jurusan')">🎓 Jurusan</button>
-            </div>
-
-            <button class="btn-full" onclick="goToSlide('tkj')">🕷️ Alasan Memilih TKJ</button>
-            <button class="btn-full" onclick="goToSlide('ig')">📸 Instagram & Bio</button>
-            <button class="btn-full" style="background:#e62429; border-color:#ff333d;" onclick="goToSlide('penutup')">🏁 Penutup</button>
+            <h1 id="hero-name">[Nama Kamu]</h1>
+            <p class="alias" id="hero-alias">Alias: The Friendly Neighborhood Developer</p>
         </div>
 
-        <!-- SCREEN: NAMA -->
-        <div id="screen-nama" class="screen hidden">
-            <h1>Profil: Nama</h1>
-            <p class="tagline">Identitas Utama</p>
-            <div class="slide-card">
-                <div class="slide-title">Nama Lengkap</div>
-                <div class="slide-content">MUIZ ADKHA MAULANA</div>
-                <div class="slide-title">💬 Komentar Pembaca:</div>
-                <div class="slide-comment">"Nama yang kuat dan penuh percaya diri, siap melompat tinggi layaknya pahlawan pelindung kota!"</div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-back" onclick="goToSlide('menu')">⬅ Menu Utama</button>
-                <button class="btn-next" onclick="goToSlide('ttl')">Selanjutnya ➡</button>
-            </div>
+        <!-- Bio Section -->
+        <div class="bio-section">
+            <h3>📜 Misi & Biografi</h3>
+            <p id="hero-bio">"Dengan kekuatan coding yang besar, datang pula tanggung jawab proyek yang besar!" Saya berfokus pada dunia teknologi dan pemecahan masalah melalui aplikasi web.</p>
         </div>
 
-        <!-- SCREEN: TTL -->
-        <div id="screen-ttl" class="screen hidden">
-            <h1>Profil: TTL</h1>
-            <p class="tagline">Waktu & Tempat Lahir</p>
-            <div class="slide-card">
-                <div class="slide-title">Tempat, Tanggal Lahir</div>
-                <div class="slide-content">MALANG, 21 NOVEMBER 2009</div>
-                <div class="slide-title">💬 Komentar Pembaca:</div>
-                <div class="slide-comment">"Lahir di Kota Malang yang sejuk, membawa semangat yang membara untuk terus belajar teknologi."</div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-back" onclick="goToSlide('nama')">⬅ Sebelumnya</button>
-                <button class="btn-next" onclick="goToSlide('alamat')">Selanjutnya ➡</button>
-            </div>
+        <!-- Skills / Kekuatan -->
+        <h3>⚡ Kekuatan / Skillset</h3>
+        <div class="skills">
+            <span class="skill-tag">HTML Web-Slinging</span>
+            <span class="skill-tag">CSS Styling Power</span>
+            <span class="skill-tag">JavaScript Logic</span>
+            <span class="skill-tag">Problem Solving</span>
         </div>
 
-        <!-- SCREEN: ALAMAT -->
-        <div id="screen-alamat" class="screen hidden">
-            <h1>Profil: Alamat</h1>
-            <p class="tagline">Domisili Tempat Tinggal</p>
-            <div class="slide-card">
-                <div class="slide-title">Alamat Domisili</div>
-                <div class="slide-content">LEBAKHARJO, AMPELGADING</div>
-                <div class="slide-title">💬 Komentar Pembaca:</div>
-                <div class="slide-comment">"Berasal dari kawasan asri Lebakharjo, Ampelgading, siap menjelajahi dunia digital tanpa batas."</div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-back" onclick="goToSlide('ttl')">⬅ Sebelumnya</button>
-                <button class="btn-next" onclick="goToSlide('jurusan')">Selanjutnya ➡</button>
-            </div>
+        <!-- Tombol Interaktif -->
+        <div class="action-buttons">
+            <button id="spider-sense-btn" class="btn btn-warning">🕷️ Aktifkan Spider-Sense</button>
+            <button id="toggle-identity-btn" class="btn btn-primary">🔄 Ubah Identitas Rahasia</button>
         </div>
-
-        <!-- SCREEN: JURUSAN -->
-        <div id="screen-jurusan" class="screen hidden">
-            <h1>Profil: Jurusan</h1>
-            <p class="tagline">Bidang Keahlian Sekolah</p>
-            <div class="slide-card">
-                <div class="slide-title">Jurusan Sekolah</div>
-                <div class="slide-content">TKJ (Teknik Komputer dan Jaringan)</div>
-                <div class="slide-title">💬 Komentar Pembaca:</div>
-                <div class="slide-comment">"Anak TKJ sejati: paham jaringan, handal perangkat keras, dan kreatif merancang aplikasi web!"</div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-back" onclick="goToSlide('alamat')">⬅ Sebelumnya</button>
-                <button class="btn-next" onclick="goToSlide('tkj')">Selanjutnya ➡</button>
-            </div>
-        </div>
-
-        <!-- SCREEN: ALASAN TKJ -->
-        <div id="screen-tkj" class="screen hidden">
-            <h1>Alasan Memilih TKJ</h1>
-            <p class="tagline">Visi & Misi Digital</p>
-            <div class="slide-card">
-                <div class="slide-title">Tujuan & Impian</div>
-                <div class="slide-content">ALASAN SAYA MEMILIH JURUSAN TKJ YAITU UNTUK MEMPELAJARI CARA KERJA SISTEM KOMPUTASI DAN BISA BERPIKIR SECARA KOMPUTASIONAL AGAR SAYA BISA MENGEMBANGKAN BANYAK WEBSITE MAUPUN APLIKASI YANG MUNGKIN BISA BERGUNA UNTUK SAYA ATAUPUN MASYARAKAT NANTI</div>
-                <div class="slide-title">💬 Komentar Pembaca:</div>
-                <div class="slide-comment">"Pola pikir yang luar biasa! Seperti Peter Parker yang menggunakan sains untuk menolong sesama, Muiz menggunakan coding untuk membangun solusi bagi masyarakat."</div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-back" onclick="goToSlide('jurusan')">⬅ Sebelumnya</button>
-                <button class="btn-next" onclick="goToSlide('ig')">Selanjutnya ➡</button>
-            </div>
-        </div>
-
-        <!-- SCREEN: INSTAGRAM -->
-        <div id="screen-ig" class="screen hidden">
-            <h1>Media Sosial</h1>
-            <p class="tagline">Terhubung Lewat Instagram</p>
-            <div class="slide-card">
-                <div class="slide-title">Akun Instagram</div>
-                <!-- Ganti link di bawah dengan akun instagram Anda yang sebenarnya -->
-                <a href="https://instagram.com/muizadkha" target="_blank" class="ig-box">
-                    📸 Kunjungi Instagram (@muizadkha)
-                </a>
-                <div class="slide-title" style="margin-top:15px;">Bio Instagram:</div>
-                <div class="slide-content" style="font-size:13px; font-weight:normal;">
-                    "Tech enthusiast | TKJ Student | Building digital experience with web code. 🕷️✨"
-                </div>
-                <div class="slide-title">💬 Komentar Pembaca:</div>
-                <div class="slide-comment">"Jangan lupa follow akun IG-nya ya teman-teman SMA Plus Alfalah Almakky!"</div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-back" onclick="goToSlide('tkj')">⬅ Sebelumnya</button>
-                <button class="btn-next" onclick="goToSlide('penutup')">Selanjutnya ➡</button>
-            </div>
-        </div>
-
-        <!-- SCREEN: PENUTUP -->
-        <div id="screen-penutup" class="screen hidden">
-            <h1>PENUTUP</h1>
-            <p class="tagline">Akhir Presentasi</p>
-            <div class="slide-card" style="text-align: center;">
-                <div class="slide-title">Pesan Penutup</div>
-                <div class="slide-content" style="font-size: 16px; color: #ff333d; border-bottom: none; margin-bottom: 5px;">
-                    SEKIAN DARI SAYA ASSALAMUALAIKUM WR. WB.
-                </div>
-                <div class="slide-comment" style="text-align: left; margin-top: 15px;">
-                    "Terima kasih atas perhatiannya! Dengan kekuatan yang besar, datang pula tanggung jawab yang besar untuk terus belajar ngoding! 👋"
-                </div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-back" onclick="goToSlide('ig')">⬅ Sebelumnya</button>
-                <button class="btn-next" onclick="goToSlide('menu')" style="background:#e62429; color:#fff;">🏠 Menu Utama</button>
-            </div>
-        </div>
-
     </div>
 
-    <!-- JAVASCRIPT NAVIGASI SLIDE -->
-    <script>
-        function goToSlide(screenName) {
-            // Sembunyikan semua screen
-            const screens = document.querySelectorAll('.screen');
-            screens.forEach(scr => scr.classList.add('hidden'));
-
-            // Tampilkan screen yang dituju
-            if (screenName === 'menu') {
-                document.getElementById('screen-menu').classList.remove('hidden');
-            } else {
-                document.getElementById('screen-' + screenName).classList.remove('hidden');
-            }
-
-            // Gulir layar ke atas card
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
