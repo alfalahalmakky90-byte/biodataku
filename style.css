@@ -1,4 +1,4 @@
-/* Reset & Styling Dasar Tema Spider-Man */
+/* Reset & Style Dasar */
 * {
     margin: 0;
     padding: 0;
@@ -19,13 +19,13 @@ body {
     padding: 20px;
 }
 
-/* Kartu Biodata */
+/* Kartu Utama */
 .card-container {
     background: #161b22;
-    border: 3px solid #e62429; /* Merah khas Marvel/Spidey */
+    border: 3px solid #e62429;
     border-radius: 16px;
-    padding: 30px;
-    max-width: 420px;
+    padding: 25px;
+    max-width: 450px;
     width: 100%;
     text-align: center;
     box-shadow: 0 0 20px rgba(230, 36, 41, 0.4);
@@ -40,16 +40,16 @@ body {
     padding: 4px 12px;
     border-radius: 12px;
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     letter-spacing: 1px;
 }
 
 .avatar-box {
-    margin: 0 auto 15px;
-    width: 120px;
-    height: 120px;
+    margin: 0 auto 10px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border: 4px solid #0055ff; /* Biru Spider-Man */
+    border: 4px solid #0055ff;
     overflow: hidden;
 }
 
@@ -59,41 +59,79 @@ body {
     object-fit: cover;
 }
 
+h1 {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
 .alias {
     color: #0088ff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-style: italic;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.bio-section {
-    background: #21262d;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: left;
-    font-size: 0.9rem;
-    border-left: 4px solid #e62429;
-}
-
-.skills {
+/* Tombol Data Diri */
+.info-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     justify-content: center;
-    margin: 15px 0 25px;
+    margin-bottom: 15px;
 }
 
-.skill-tag {
-    background: #0055ff;
-    color: white;
+.btn-info {
+    background-color: #21262d;
+    color: #58a6ff;
+    border: 1px solid #30363d;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: bold;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-/* Tombol Aksi */
+.btn-info:hover {
+    background-color: #0055ff;
+    color: #ffffff;
+    border-color: #0055ff;
+}
+
+/* Kustomisasi Khusus Tombol Kategori Instagram */
+.btn-ig:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
+
+/* Layar Tampilan Informasi */
+.display-box {
+    background: #0d1117;
+    border: 1px dashed #e62429;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    min-height: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.display-label {
+    font-size: 0.7rem;
+    color: #e62429;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.display-value {
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+/* Tombol Aksi Khas Spider-Man & IG Link */
 .action-buttons {
     display: flex;
     flex-direction: column;
@@ -101,11 +139,19 @@ body {
 }
 
 .btn {
-    padding: 12px;
+    padding: 10px;
     border: none;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.btn-instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #ffffff;
 }
 
 .btn-warning {
@@ -119,10 +165,10 @@ body {
 }
 
 .btn:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
-/* Efek Spider-Sense (Animasi Bergetar + Glow) */
+/* Efek Spider-Sense */
 .spider-sense-active {
     animation: pulse-glow 0.4s infinite alternate;
     border-color: #ffcc00 !important;
